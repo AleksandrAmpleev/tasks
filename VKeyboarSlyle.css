@@ -1,0 +1,116 @@
+﻿body {
+}
+
+.textareaSt {
+    clear: both;
+    min-height: 100px;
+    margin-bottom: 8px;
+    max-width: 600px;
+    min-width: 600px;
+}
+
+.keyboard {
+    background-color: #808080;
+    border: 3px solid #222222;
+    border-radius: 5px;
+    max-width: 600px;
+    min-width: 600px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px 0px 5px 0px;
+}
+
+.key {
+    background-color: #555555;
+    color: #4cff00;
+    border: 1px solid #00ff00;
+    border-radius: 10%;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    min-height: 10px;
+    min-width: 10px;
+    padding: 10px;
+    flex-wrap: nowrap;
+}
+
+.sKey {
+    background-color: #000000;
+    color: #4cff00;
+    border: 1px solid #00ff00;
+    border-radius: 10%;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    min-height: 10px;
+    min-width: 10px;
+    padding: 10px;
+    flex-wrap: nowrap;
+}
+
+.hidden {
+    display: none;
+}
+
+.key:hover {
+    background-color: #7bffb3;
+    color: #0000FF;
+    transform: scale(1.05, 1.05) rotate(2deg);
+    opacity: 0.9;
+    transition: filter 0.5s linear;
+    filter: brightness(1) grayscale(1) opacity(0.9);
+}
+
+.sKey:hover {
+    background-color: #7bffb3;
+    color: #0000FF;
+    transform: scale(1.05, 1.05) rotate(2deg);
+    opacity: 0.9;
+    transition: filter 0.5s linear;
+    filter: brightness(1) grayscale(1) opacity(0.9);
+}
+
+.keyPress2 {
+    background-color: #7bffb3;
+    color: #FF0000;
+    transform: scale(1.05, 1.05) rotate(2deg);
+    opacity: 0.9;
+    transition: filter 0.5s linear;
+    filter: brightness(1) grayscale(1) opacity(0.9);
+}
+
+.keyPress1 {
+    background-color: #7bffb3;
+    color: #FF0000;
+    transform: scale(1.05, 1.05) rotate(2deg);
+    opacity: 0.9;
+    transition: filter 0.5s linear;
+    filter: brightness(1) grayscale(1) opacity(0.9);
+}
+
+.spaceKey {
+    min-width: 150px;
+}
+
+.shiftKey {
+    min-width: 75px;
+}
+
+.ctrlKey {
+    min-width: 40px;
+}
+
+.altKey {
+    min-width: 40px;
+}
+
+.capsLockKey {
+    min-width: 40px;
+}
+
+.enterkKey {
+    min-width: 40px;
+}
