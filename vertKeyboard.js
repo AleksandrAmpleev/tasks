@@ -15,59 +15,59 @@
         { eng: '=', rus: '=', upE: '+', upR: '+', keycode: 187, options: { spKey: false } },
         { eng: 'Backspace', rus: 'Backspace', upE: 'Backspace', upR: 'Backspace', keycode: 8, options: { spKey: true } }],
     [
-        { eng: 'Tab', rus: 'Tab', upE: 'Tab', upR: 'Tab', keycode: 0,options: { spKey: true } },
-        { eng: 'q', rus: 'й', upE: 'Q', upR: 'Й', keycode: 0, options: { spKey: false } },
-        { eng: 'w', rus: 'ц', upE: 'W', upR: 'Ц', keycode: 0, options: { spKey: false } },
-        { eng: 'e', rus: 'у', upE: 'E', upR: 'У', keycode: 0, options: { spKey: false } },
-        { eng: 'r', rus: 'к', upE: 'R', upR: 'К', keycode: 0, options: { spKey: false } },
-        { eng: 't', rus: 'е', upE: 'T', upR: 'Е', keycode: 0, options: { spKey: false } },
-        { eng: 'y', rus: 'н', upE: 'Y', upR: 'Н', keycode: 0, options: { spKey: false } },
-        { eng: 'u', rus: 'г', upE: 'U', upR: 'Г', keycode: 0, options: { spKey: false } },
-        { eng: 'i', rus: 'ш', upE: 'I', upR: 'Ш', keycode: 0, options: { spKey: false } },
-        { eng: 'o', rus: 'щ', upE: 'O', upR: 'Щ', keycode: 0, options: { spKey: false } },
-        { eng: 'p', rus: 'з', upE: 'P', upR: 'З', keycode: 0, options: { spKey: false } },
-        { eng: '[', rus: 'х', upE: '{', upR: 'Х', keycode: 0, options: { spKey: false } },
-        { eng: ']', rus: 'ъ', upE: '}', upR: 'Ъ', keycode: 0, options: { spKey: false } },
-        { eng: '\\', rus: '\\', upE: '|', upR: '/', keycode: 0, options: { spKey: false } },
-        { eng: 'Del', rus: 'Del', upE: 'Del', upR: 'Del', keycode: 0, options: { spKey: true } }],
+        { eng: 'Tab', rus: 'Tab', upE: 'Tab', upR: 'Tab', keycode: 9, options: { spKey: true } },
+        { eng: 'q', rus: 'й', upE: 'Q', upR: 'Й', keycode: 81, options: { spKey: false } },
+        { eng: 'w', rus: 'ц', upE: 'W', upR: 'Ц', keycode: 50, options: { spKey: false } },
+        { eng: 'e', rus: 'у', upE: 'E', upR: 'У', keycode: 69, options: { spKey: false } },
+        { eng: 'r', rus: 'к', upE: 'R', upR: 'К', keycode: 82, options: { spKey: false } },
+        { eng: 't', rus: 'е', upE: 'T', upR: 'Е', keycode: 84, options: { spKey: false } },
+        { eng: 'y', rus: 'н', upE: 'Y', upR: 'Н', keycode: 89, options: { spKey: false } },
+        { eng: 'u', rus: 'г', upE: 'U', upR: 'Г', keycode: 85, options: { spKey: false } },
+        { eng: 'i', rus: 'ш', upE: 'I', upR: 'Ш', keycode: 73, options: { spKey: false } },
+        { eng: 'o', rus: 'щ', upE: 'O', upR: 'Щ', keycode: 79, options: { spKey: false } },
+        { eng: 'p', rus: 'з', upE: 'P', upR: 'З', keycode: 80, options: { spKey: false } },
+        { eng: '[', rus: 'х', upE: '{', upR: 'Х', keycode: 219, options: { spKey: false } },
+        { eng: ']', rus: 'ъ', upE: '}', upR: 'Ъ', keycode: 221, options: { spKey: false } },
+        { eng: '\\', rus: '\\', upE: '|', upR: '/', keycode: 220, options: { spKey: false } },
+        { eng: 'Del', rus: 'Del', upE: 'Del', upR: 'Del', keycode: 46, options: { spKey: true } }],
     [
-        { eng: 'CapsLock', rus: 'CapsLock', upE: 'CapsLock', upR: 'CapsLock', options: { spKey: true, extStyles: ['capsLockKey'] } },
-        { eng: 'a', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: 's', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: 'd', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: 'f', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: 'g', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: 'h', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: 'j', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: 'k', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: 'l', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: ';', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: '\'', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: false } },
-        { eng: 'Enter', rus: 'Enter', upE: 'Enter', upR: 'Enter', keycode: 0, options: { spKey: true, extStyles: ['enterKey'] } }],
+        { eng: 'CapsLock', rus: 'CapsLock', upE: 'CapsLock', upR: 'CapsLock', keycode: 20, options: { spKey: true, extStyles: ['capsLockKey'] } },
+        { eng: 'a', rus: 'ф', upE: '', upR: '', keycode: 65, options: { spKey: false } },
+        { eng: 's', rus: 'ы', upE: '', upR: '', keycode: 83, options: { spKey: false } },
+        { eng: 'd', rus: 'в', upE: '', upR: '', keycode: 68, options: { spKey: false } },
+        { eng: 'f', rus: 'а', upE: '', upR: '', keycode: 70, options: { spKey: false } },
+        { eng: 'g', rus: 'п', upE: '', upR: '', keycode: 71, options: { spKey: false } },
+        { eng: 'h', rus: 'р', upE: '', upR: '', keycode: 72, options: { spKey: false } },
+        { eng: 'j', rus: 'о', upE: '', upR: '', keycode: 74, options: { spKey: false } },
+        { eng: 'k', rus: 'л', upE: '', upR: '', keycode: 75, options: { spKey: false } },
+        { eng: 'l', rus: 'д', upE: '', upR: '', keycode: 76, options: { spKey: false } },
+        { eng: ';', rus: 'ж', upE: '', upR: '', keycode: 186, options: { spKey: false } },
+        { eng: '\'', rus: 'э', upE: '', upR: '', keycode: 222, options: { spKey: false } },
+        { eng: 'Enter', rus: 'Enter', upE: 'Enter', upR: 'Enter', keycode: 13, options: { spKey: true, extStyles: ['enterKey'] } }],
     [
-        { eng: 'Shift', rus: 'Shift', upE: 'Shift', upR: 'Shift', keycode: 0, options: { spKey: true, extStyles: ['shiftKey'] } },
-        { eng: 'z', rus: 'я', upE: 'Z', upR: 'Я', keycode: 0, options: { spKey: false } },
-        { eng: 'x', rus: 'ч', upE: 'X', upR: 'Ч', keycode: 0, options: { spKey: false } },
-        { eng: 'c', rus: 'с', upE: 'C', upR: 'С', keycode: 0, options: { spKey: false } },
-        { eng: 'v', rus: 'м', upE: 'V', upR: 'М', keycode: 0, options: { spKey: false } },
-        { eng: 'b', rus: 'и', upE: 'B', upR: 'И', keycode: 0, options: { spKey: false } },
-        { eng: 'n', rus: 'т', upE: 'N', upR: 'Т', keycode: 0, options: { spKey: false } },
-        { eng: 'm', rus: 'ь', upE: 'M', upR: 'Ь', keycode: 0, options: { spKey: false } },
-        { eng: ',', rus: 'б', upE: '<', upR: 'Б', keycode: 0, options: { spKey: false } },
-        { eng: '.', rus: 'ю', upE: '>', upR: 'Ю', keycode: 0, options: { spKey: false } },
-        { eng: '/', rus: '.', upE: '?', upR: ',', keycode: 0, options: { spKey: false } },
-        { eng: '↑', rus: '↑', upE: '↑', upR: '↑', keycode: 0, options: { spKey: true } },
-        { eng: 'Shift', rus: 'Shift', upE: 'Shift', upR: 'Shift', keycode: 0, options: { spKey: true, extStyles: ['shiftKey'] } }],
+        { eng: 'Shift', rus: 'Shift', upE: 'Shift', upR: 'Shift', keycode: 16, options: { spKey: true, extStyles: ['shiftKey'] } },
+        { eng: 'z', rus: 'я', upE: 'Z', upR: 'Я', keycode: 90, options: { spKey: false } },
+        { eng: 'x', rus: 'ч', upE: 'X', upR: 'Ч', keycode: 88, options: { spKey: false } },
+        { eng: 'c', rus: 'с', upE: 'C', upR: 'С', keycode: 67, options: { spKey: false } },
+        { eng: 'v', rus: 'м', upE: 'V', upR: 'М', keycode: 86, options: { spKey: false } },
+        { eng: 'b', rus: 'и', upE: 'B', upR: 'И', keycode: 66, options: { spKey: false } },
+        { eng: 'n', rus: 'т', upE: 'N', upR: 'Т', keycode: 78, options: { spKey: false } },
+        { eng: 'm', rus: 'ь', upE: 'M', upR: 'Ь', keycode: 77, options: { spKey: false } },
+        { eng: ',', rus: 'б', upE: '<', upR: 'Б', keycode: 188, options: { spKey: false } },
+        { eng: '.', rus: 'ю', upE: '>', upR: 'Ю', keycode: 190, options: { spKey: false } },
+        { eng: '/', rus: '.', upE: '?', upR: ',', keycode: 191, options: { spKey: false } },
+        { eng: '↑', rus: '↑', upE: '↑', upR: '↑', keycode: 38, options: { spKey: true } },
+        { eng: 'Shift', rus: 'Shift', upE: 'Shift', upR: 'Shift', keycode: 1622, options: { spKey: true, extStyles: ['shiftKey'] } }],
     [
-        { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 0, options: { spKey: true, extStyles: ['ctrlKey'] } },
-        { eng: 'Win', rus: 'Win', upE: 'Win', upR: 'Win', keycode: 0, options: { spKey: true } },
-        { eng: 'Alt', rus: 'Alt', upE: 'Alt', upR: 'Alt', keycode: 0, options: { spKey: true, extStyles: ['altKey'] } },
-        { eng: '', rus: '', upE: '', upR: '', keycode: 0, options: { spKey: true, extStyles: ['spaceKey'] } },
-        { eng: 'Alt', rus: 'Alt', upE: 'Alt', upR: 'Alt', keycode: 0, options: { spKey: true, extStyles: ['altKey'] } },
-        { eng: '←', rus: '←', upE: '←', upR: '←', keycode: 0, options: { spKey: true } },
-        { eng: '↓', rus: '↓', upE: '↓', upR: '↓', keycode: 0, options: { spKey: true } },
-        { eng: '→', rus: '→', upE: '→', upR: '→', keycode: 0, options: { spKey: true } },
-        { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 0, options: { spKey: true, extStyles: ['ctrlKey'] } }]
+        { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 17, options: { spKey: true, extStyles: ['ctrlKey'] } },
+        { eng: 'Win', rus: 'Win', upE: 'Win', upR: 'Win', keycode: 91, options: { spKey: true } },
+        { eng: 'Alt', rus: 'Alt', upE: 'Alt', upR: 'Alt', keycode: 18, options: { spKey: true, extStyles: ['altKey'] } },
+        { eng: '', rus: '', upE: '', upR: '', keycode: 32, options: { spKey: true, extStyles: ['spaceKey'] } },
+        { eng: 'Alt', rus: 'Alt', upE: 'Alt', upR: 'Alt', keycode: 1822, options: { spKey: true, extStyles: ['altKey'] } },
+        { eng: '←', rus: '←', upE: '←', upR: '←', keycode: 37, options: { spKey: true } },
+        { eng: '↓', rus: '↓', upE: '↓', upR: '↓', keycode: 40, options: { spKey: true } },
+        { eng: '→', rus: '→', upE: '→', upR: '→', keycode: 39, options: { spKey: true } },
+        { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 1722, options: { spKey: true, extStyles: ['ctrlKey'] } }]
 ];
 
 const txtArea = document.querySelector('#textareaId');
@@ -98,13 +98,22 @@ function setListeners() {
         }
     }
     addEventListener("keydown", function (e) {
-        let element = document.getElementById('keyEn' + e.keyCode);
+        let extCode = '';
+        if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
+            extCode = '22';
+        }
+        let element = document.getElementById('keyEn' + e.keyCode + extCode);
+
         if (element) {
             element.classList.toggle('keyPress1');
         }
     });
     addEventListener("keyup", function (e) {
-        let element = document.getElementById('keyEn' + e.keyCode);
+        let extCode = '';
+        if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
+            extCode = '22';
+        }
+        let element = document.getElementById('keyEn' + e.keyCode + extCode);
         if (element) {
             element.classList.toggle('keyPress1');
         }
@@ -148,7 +157,7 @@ function drawKeyboard() {
         }
 
         keyboard.appendChild(rowDiv);
-    }  
+    }
     setListeners();
 }
 window.onload = drawKeyboard;
