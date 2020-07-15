@@ -72,11 +72,28 @@
 
 const txtArea = document.querySelector('#textareaId');
 const keyboard = document.querySelector('#keyboadId');
+
+const constKeyEngU = 'keyUpE';
+const constKeyEngR = 'keyUpR';
+const constKeyEng = 'keyEn';
+const constKeyRU = 'keyRu';
+
 let currentKeyboardEng = true;
 let currentKeyboardUppercase = false;
 
 let pressedCtrl = 0;
 let pressedAlt = 0;
+
+function getSwither() {
+    let swither = constKeyEng;
+
+    if (currentKeyboardEng) {
+        swither = currentKeyboardUppercase ? constKeyEngU : constKeyEng;
+    } else {
+        swither = currentKeyboardUppercase ? constKeyEngR : constKeyRU;
+    }
+    return swither;
+}
 
 function setExtKeyBoardStyles(elem, options) {
     elem.classList.add(options.spKey ? 'sKey' : 'key');
@@ -101,25 +118,25 @@ function switchKeyboardCase() {
     }
 
     for (let i = 0; i < elementsNeedToHide.length; i++) {
-        let t1 = elementsNeedToHide[i].classList.toggle('hidden');
+        elementsNeedToHide[i].classList.toggle('hidden');
     }
 
     for (let i = 0; i < elementsNeedToUnHide.length; i++) {
-        let t2 = elementsNeedToUnHide[i].classList.toggle('hidden');
+        elementsNeedToUnHide[i].classList.toggle('hidden');
     }
 }
 
 function switchLanguage() {
 
-    let elementsNeedToHide = document.querySelectorAll(currentKeyboardUppercase ? '[id^="keyUpE"]' : '[id^="keyEn"]'); //[id^="keyEn"]
-    let elementsNeedToUnHide = document.querySelectorAll(currentKeyboardUppercase ? '[id^="keyUpR"]' : '[id^="keyRu"]'); //keyUpR
+    let elementsNeedToHide = document.querySelectorAll(currentKeyboardUppercase ? '[id^="keyUpE"]' : '[id^="keyEn"]');
+    let elementsNeedToUnHide = document.querySelectorAll(currentKeyboardUppercase ? '[id^="keyUpR"]' : '[id^="keyRu"]'); 
 
     for (let i = 0; i < elementsNeedToHide.length; i++) {
-        let t1 = elementsNeedToHide[i].classList.toggle('hidden');
+        elementsNeedToHide[i].classList.toggle('hidden');
     }
 
     for (let i = 0; i < elementsNeedToUnHide.length; i++) {
-        let t2 = elementsNeedToUnHide[i].classList.toggle('hidden');
+        elementsNeedToUnHide[i].classList.toggle('hidden');
     }
 }
 
@@ -128,27 +145,33 @@ function keyClick(e) {
     if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
         extCode = '22';
     }
-    let element = document.getElementById('keyEn' + e.keyCode + extCode);
+    let element = document.getElementById(constKeyEng + e.keyCode + extCode);
     if (element) {
         element.classList.toggle('keyPress1');
     }
 }
 
-
+function clearKey(code, extCode) {
+    let swither = getSwither();
+    let elementForClear = document.getElementById(swither + code + extCode);
+    if (elementForClear) {
+        elementForClear.classList.remove('keyPress1');
+    }  
+}
 
 function setListeners() {
     for (let i = 0; i < arrKeyBoard.length; i++) {
         for (let j = 0; j < arrKeyBoard[i].length; j++) {
-            let elementEn = document.getElementById('keyEn' + arrKeyBoard[i][j].keycode);
+            let elementEn = document.getElementById(constKeyEng + arrKeyBoard[i][j].keycode);
             elementEn.addEventListener('click', keyClick);
 
-            let elementEnUp = document.getElementById('keyUpE' + arrKeyBoard[i][j].keycode);
+            let elementEnUp = document.getElementById(constKeyEngU + arrKeyBoard[i][j].keycode);
             elementEnUp.addEventListener('click', keyClick);
 
-            let elementRu = document.getElementById('keyRu' + arrKeyBoard[i][j].keycode);
+            let elementRu = document.getElementById(constKeyRU + arrKeyBoard[i][j].keycode);
             elementRu.addEventListener('click', keyClick);
 
-            let elementRuUp = document.getElementById('keyUpR' + arrKeyBoard[i][j].keycode);
+            let elementRuUp = document.getElementById(constKeyEngR + arrKeyBoard[i][j].keycode);
             elementRuUp.addEventListener('click', keyClick);
 
         }
@@ -158,16 +181,7 @@ function setListeners() {
         if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
             extCode = '22';
         }
-        let swither = 'keyEn';
-
-        if (currentKeyboardEng) {
-            swither = currentKeyboardUppercase ? 'keyUpE' : 'keyEn';
-        } else {
-            swither = currentKeyboardUppercase ? 'keyUpR' : 'keyRu';
-        }
-        //currentKeyboardEng
-        //currentKeyboardUppercase
-
+        let swither = getSwither(); 
         let element = document.getElementById(swither + e.keyCode + extCode);
 
         if (element) {
@@ -192,15 +206,7 @@ function setListeners() {
         if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
             extCode = '22';
         }
-
-        let swither = 'keyEn';
-
-        if (currentKeyboardEng) {
-            swither = currentKeyboardUppercase ? 'keyUpE' : 'keyEn';
-        } else {
-            swither = currentKeyboardUppercase ? 'keyUpR' : 'keyRu';
-        }
-
+        let swither = getSwither(); 
         let element = document.getElementById(swither + e.keyCode + extCode);
         if (element) {
             element.classList.toggle('keyPress1');
@@ -217,12 +223,17 @@ function setListeners() {
             switchKeyboardCase();
             currentKeyboardUppercase = !currentKeyboardUppercase;
         }
+        if (e.keyCode === 17) {
+            clearKey(e.keyCode, extCode);
+        }
+        if (e.keyCode === 18) {
+            clearKey(e.keyCode, extCode);
+        }
     });
 }
 
 function drawKeyboard() {
-
-    for (var j = 0; j < 5; j++) {
+    for (var j = 0; j < arrKeyBoard.length; j++) {
         let rowDiv = document.createElement('div');
         rowDiv.classList.add('row');
 
@@ -230,32 +241,31 @@ function drawKeyboard() {
             let newKeySpanEng = document.createElement('span');
             let currentKey = arrKeyBoard[j][i];
             newKeySpanEng.innerHTML = currentKey.eng;
-            newKeySpanEng.id = 'keyEn' + currentKey.keycode;
+            newKeySpanEng.id = constKeyEng + currentKey.keycode;
             setExtKeyBoardStyles(newKeySpanEng, currentKey.options);
             rowDiv.appendChild(newKeySpanEng);
 
             let newKeySpanRus = document.createElement('span');
             newKeySpanRus.innerHTML = currentKey.rus;
-            newKeySpanRus.id = 'keyRu' + currentKey.keycode;
+            newKeySpanRus.id = constKeyRU + currentKey.keycode;
             setExtKeyBoardStyles(newKeySpanRus, currentKey.options);
             newKeySpanRus.classList.add('hidden');
             rowDiv.appendChild(newKeySpanRus);
 
             let newKeySpanUpE = document.createElement('span');
             newKeySpanUpE.innerHTML = currentKey.upE;
-            newKeySpanUpE.id = 'keyUpE' + currentKey.keycode;
+            newKeySpanUpE.id = constKeyEngU + currentKey.keycode;
             setExtKeyBoardStyles(newKeySpanUpE, currentKey.options);
             newKeySpanUpE.classList.add('hidden');
             rowDiv.appendChild(newKeySpanUpE);
 
             let newKeySpanUpR = document.createElement('span');
             newKeySpanUpR.innerHTML = currentKey.upR;
-            newKeySpanUpR.id = 'keyUpR' + currentKey.keycode;
+            newKeySpanUpR.id = constKeyEngR + currentKey.keycode;
             setExtKeyBoardStyles(newKeySpanUpR, currentKey.options);
             newKeySpanUpR.classList.add('hidden');
             rowDiv.appendChild(newKeySpanUpR);
         }
-
         keyboard.appendChild(rowDiv);
     }
     setListeners();
