@@ -86,7 +86,9 @@ let pressedCtrl = 0;
 let pressedAlt = 0;
 
 function appendLitera(litera, element) {
-    if (excludeSimbols.lastIndexOf(litera.keyCode) === -1) { txtArea.value += litera.key; }
+    if (excludeSimbols.lastIndexOf(litera.keyCode) === -1 || litera.keyCode < 1000) {
+        txtArea.value += litera.key;
+    }
 
     if (litera.keyCode === 8) {
         //let str = txtArea.value.toString();
@@ -151,14 +153,8 @@ function switchLanguage() {
 }
 
 function keyClick(e) {
-    let extCode = '';
-    if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
-        extCode = '22';
-    }
-    let element = document.getElementById(constKeyEng + e.keyCode + extCode);
-    if (element) {
-        element.classList.toggle('keyPress1');
-    }
+    let element = document.getElementById(e.target.id);
+    appendLitera(e.target, element);    
 }
 
 function clearKey(code, extCode) {
