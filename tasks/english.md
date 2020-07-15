@@ -1,11 +1,26 @@
-### К моменту окончания курса ваш уровень английского должен быть уровня A2 (pre-intermediate) или выше.
+﻿# English and RSSchool
 
-Полезные ссылки:
-  * Протестировать свой уровень английского - http://test.str.by/
-  * https://lingualeo.com
-  * https://www.duolingo.com/ 
+### By the end of Stage #3, your English level must be A2 (Pre-Intermediate) or higher.  
 
-Рекомендации студентов: 
+If you have completed English courses within the last 18 months and have a relevant certificate/statement of accomplishment:
+1) Send a photo or scanned copy thereof to your mentor
+2) Your **Presentation task** must be completed and accessible via YouTube
+3) Your mentor will fill in the relevant cell in the “Score” spreadsheet and add the following comment: “based on certificate/statement of accomplishment”
+
+### Intermediate test at Stage #2
+1) Test you English level at http://test.str.by/
+2) Screenshot your result
+3) Send the screenshot to your mentor
+4) Your **Presentation task** must be completed and accessible via YouTube
+5) Your mentor will fill in the relevant cell in the “Score” spreadsheet and add the following comment: “based on online testing”
+   
+Useful links:
+ * Test your English level at http://test.str.by/
+ * https://lingualeo.com
+ * https://www.duolingo.com/
+ 
+Student's recommendations
+
 ```
 DenisPapchenko @Interstlr 00:29
 По английскому советую всем приложение на смартфон Simpler - краткое изучение и практика английской грамматики. 
