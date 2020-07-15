@@ -69,9 +69,10 @@
         { eng: '→', rus: '→', upE: '→', upR: '→', keycode: 39, options: { spKey: true } },
         { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 1722, options: { spKey: true, extStyles: ['ctrlKey'] } }]
 ];
-
+const excludeSimbols = [8, 9, 16, 17, 18, 19, 20, 37, 38, 39, 46, 91];
 const virtualKB = document.querySelector('#virtualKB');
-let keyboard = undefined; 
+let keyboard = undefined;
+let txtArea = undefined;
 
 const constKeyEngU = 'keyUpE';
 const constKeyEngR = 'keyUpR';
@@ -84,8 +85,13 @@ let currentKeyboardUppercase = false;
 let pressedCtrl = 0;
 let pressedAlt = 0;
 
-function appendLitera(litera) {
-    //appendLitera.
+function appendLitera(litera, element) {
+    if (excludeSimbols.lastIndexOf(litera.keyCode) === -1) { txtArea.value += litera.key; }
+
+    if (litera.keyCode === 8) {
+        //let str = txtArea.value.toString();
+        //txtArea.value = str.slice(txtArea.value.toString().length - 1, txtArea.value.toString().length);
+    }
 }
 
 function getSwither() {
@@ -133,7 +139,7 @@ function switchKeyboardCase() {
 function switchLanguage() {
 
     let elementsNeedToHide = document.querySelectorAll(currentKeyboardUppercase ? '[id^="keyUpE"]' : '[id^="keyEn"]');
-    let elementsNeedToUnHide = document.querySelectorAll(currentKeyboardUppercase ? '[id^="keyUpR"]' : '[id^="keyRu"]'); 
+    let elementsNeedToUnHide = document.querySelectorAll(currentKeyboardUppercase ? '[id^="keyUpR"]' : '[id^="keyRu"]');
 
     for (let i = 0; i < elementsNeedToHide.length; i++) {
         elementsNeedToHide[i].classList.toggle('hidden');
@@ -160,7 +166,7 @@ function clearKey(code, extCode) {
     let elementForClear = document.getElementById(swither + code + extCode);
     if (elementForClear) {
         elementForClear.classList.remove('keyPress1');
-    }  
+    }
 }
 
 function setListeners() {
@@ -185,8 +191,10 @@ function setListeners() {
         if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
             extCode = '22';
         }
-        let swither = getSwither(); 
+        let swither = getSwither();
         let element = document.getElementById(swither + e.keyCode + extCode);
+
+        appendLitera(e, element);
 
         if (element) {
             element.classList.toggle('keyPress1');
@@ -210,7 +218,7 @@ function setListeners() {
         if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
             extCode = '22';
         }
-        let swither = getSwither(); 
+        let swither = getSwither();
         let element = document.getElementById(swither + e.keyCode + extCode);
         if (element) {
             element.classList.toggle('keyPress1');
@@ -244,6 +252,8 @@ function drawKeyboard() {
     areaTxt.cols = '50';
     virtualKB.appendChild(areaTxt);
 
+    txtArea = document.querySelector('#textareaId');
+
     keyboard = document.createElement('div');
     keyboard.className = 'keyboard';
     keyboard.id = 'keyboadId';
@@ -258,7 +268,7 @@ function drawKeyboard() {
     pDescriptions2.className = 'language';
     pDescriptions2.innerText = 'Для переключения языка комбинация: левыe ctrl + alt';
     virtualKB.appendChild(pDescriptions2);
-    
+
     for (var j = 0; j < arrKeyBoard.length; j++) {
         let rowDiv = document.createElement('div');
         rowDiv.classList.add('row');
