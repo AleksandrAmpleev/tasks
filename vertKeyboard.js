@@ -17,7 +17,7 @@
     [
         { eng: 'Tab', rus: 'Tab', upE: 'Tab', upR: 'Tab', keycode: 9, options: { spKey: true } },
         { eng: 'q', rus: 'й', upE: 'Q', upR: 'Й', keycode: 81, options: { spKey: false } },
-        { eng: 'w', rus: 'ц', upE: 'W', upR: 'Ц', keycode: 50, options: { spKey: false } },
+        { eng: 'w', rus: 'ц', upE: 'W', upR: 'Ц', keycode: 87, options: { spKey: false } },
         { eng: 'e', rus: 'у', upE: 'E', upR: 'У', keycode: 69, options: { spKey: false } },
         { eng: 'r', rus: 'к', upE: 'R', upR: 'К', keycode: 82, options: { spKey: false } },
         { eng: 't', rus: 'е', upE: 'T', upR: 'Е', keycode: 84, options: { spKey: false } },
@@ -32,17 +32,17 @@
         { eng: 'Del', rus: 'Del', upE: 'Del', upR: 'Del', keycode: 46, options: { spKey: true } }],
     [
         { eng: 'CapsLock', rus: 'CapsLock', upE: 'CapsLock', upR: 'CapsLock', keycode: 20, options: { spKey: true, extStyles: ['capsLockKey'] } },
-        { eng: 'a', rus: 'ф', upE: '', upR: '', keycode: 65, options: { spKey: false } },
-        { eng: 's', rus: 'ы', upE: '', upR: '', keycode: 83, options: { spKey: false } },
-        { eng: 'd', rus: 'в', upE: '', upR: '', keycode: 68, options: { spKey: false } },
-        { eng: 'f', rus: 'а', upE: '', upR: '', keycode: 70, options: { spKey: false } },
-        { eng: 'g', rus: 'п', upE: '', upR: '', keycode: 71, options: { spKey: false } },
-        { eng: 'h', rus: 'р', upE: '', upR: '', keycode: 72, options: { spKey: false } },
-        { eng: 'j', rus: 'о', upE: '', upR: '', keycode: 74, options: { spKey: false } },
-        { eng: 'k', rus: 'л', upE: '', upR: '', keycode: 75, options: { spKey: false } },
-        { eng: 'l', rus: 'д', upE: '', upR: '', keycode: 76, options: { spKey: false } },
-        { eng: ';', rus: 'ж', upE: '', upR: '', keycode: 186, options: { spKey: false } },
-        { eng: '\'', rus: 'э', upE: '', upR: '', keycode: 222, options: { spKey: false } },
+        { eng: 'a', rus: 'ф', upE: 'A', upR: 'Ф', keycode: 65, options: { spKey: false } },
+        { eng: 's', rus: 'ы', upE: 'S', upR: 'Ы', keycode: 83, options: { spKey: false } },
+        { eng: 'd', rus: 'в', upE: 'D', upR: 'В', keycode: 68, options: { spKey: false } },
+        { eng: 'f', rus: 'а', upE: 'F', upR: 'А', keycode: 70, options: { spKey: false } },
+        { eng: 'g', rus: 'п', upE: 'G', upR: 'П', keycode: 71, options: { spKey: false } },
+        { eng: 'h', rus: 'р', upE: 'H', upR: 'Р', keycode: 72, options: { spKey: false } },
+        { eng: 'j', rus: 'о', upE: 'J', upR: 'О', keycode: 74, options: { spKey: false } },
+        { eng: 'k', rus: 'л', upE: 'K', upR: 'Л', keycode: 75, options: { spKey: false } },
+        { eng: 'l', rus: 'д', upE: 'L', upR: 'Д', keycode: 76, options: { spKey: false } },
+        { eng: ';', rus: 'ж', upE: ';', upR: 'Ж', keycode: 186, options: { spKey: false } },
+        { eng: '\'', rus: 'э', upE: '\'', upR: 'Э', keycode: 222, options: { spKey: false } },
         { eng: 'Enter', rus: 'Enter', upE: 'Enter', upR: 'Enter', keycode: 13, options: { spKey: true, extStyles: ['enterKey'] } }],
     [
         { eng: 'Shift', rus: 'Shift', upE: 'Shift', upR: 'Shift', keycode: 16, options: { spKey: true, extStyles: ['shiftKey'] } },
@@ -72,6 +72,11 @@
 
 const txtArea = document.querySelector('#textareaId');
 const keyboard = document.querySelector('#keyboadId');
+let currentKeyboardEng = true;
+let currentKeyboardUppercase = false;
+
+let pressedCtrl = 0;
+let pressedAlt = 0;
 
 function setExtKeyBoardStyles(elem, options) {
     elem.classList.add(options.spKey ? 'sKey' : 'key');
@@ -82,19 +87,70 @@ function setExtKeyBoardStyles(elem, options) {
     }
 }
 
+function switchKeyboardCase() {
+    let elementsNeedToHide = undefined;
+    let elementsNeedToUnHide = undefined;
 
+    if (currentKeyboardEng) {
+        elementsNeedToHide = document.querySelectorAll('[id^="keyEn"]');
+        elementsNeedToUnHide = document.querySelectorAll('[id^="keyUpE"]');
+    }
+    else {
+        elementsNeedToHide = document.querySelectorAll('[id^="keyRu"]');
+        elementsNeedToUnHide = document.querySelectorAll('[id^="keyUpR"]');
+    }
+
+    for (let i = 0; i < elementsNeedToHide.length; i++) {
+        let t1 = elementsNeedToHide[i].classList.toggle('hidden');
+    }
+
+    for (let i = 0; i < elementsNeedToUnHide.length; i++) {
+        let t2 = elementsNeedToUnHide[i].classList.toggle('hidden');
+    }
+}
+
+function switchLanguage() {
+
+    let elementsNeedToHide = document.querySelectorAll(currentKeyboardUppercase ? '[id^="keyUpE"]' : '[id^="keyEn"]'); //[id^="keyEn"]
+    let elementsNeedToUnHide = document.querySelectorAll(currentKeyboardUppercase ? '[id^="keyUpR"]' : '[id^="keyRu"]'); //keyUpR
+
+    for (let i = 0; i < elementsNeedToHide.length; i++) {
+        let t1 = elementsNeedToHide[i].classList.toggle('hidden');
+    }
+
+    for (let i = 0; i < elementsNeedToUnHide.length; i++) {
+        let t2 = elementsNeedToUnHide[i].classList.toggle('hidden');
+    }
+}
 
 function keyClick(e) {
-    console.log('Click' + String.fromCharCode(event.charCode));
+    let extCode = '';
+    if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
+        extCode = '22';
+    }
+    let element = document.getElementById('keyEn' + e.keyCode + extCode);
+    if (element) {
+        element.classList.toggle('keyPress1');
+    }
 }
+
+
 
 function setListeners() {
     for (let i = 0; i < arrKeyBoard.length; i++) {
         for (let j = 0; j < arrKeyBoard[i].length; j++) {
-            let element = document.getElementById('keyEn' + arrKeyBoard[i][j].keycode);
-            element.addEventListener('click', keyClick);
-            //element.addEventListener('keydown', keyPressDown);
-            //element.addEventListener('keyup', keyPressUp);
+            let elementEn = document.getElementById('keyEn' + arrKeyBoard[i][j].keycode);
+            elementEn.addEventListener('click', keyClick);
+
+            let elementEnUp = document.getElementById('keyUpE' + arrKeyBoard[i][j].keycode);
+            elementEnUp.addEventListener('click', keyClick);
+
+            let elementRu = document.getElementById('keyRu' + arrKeyBoard[i][j].keycode);
+            elementRu.addEventListener('click', keyClick);
+
+            let elementRuUp = document.getElementById('keyUpR' + arrKeyBoard[i][j].keycode);
+            elementRuUp.addEventListener('click', keyClick);
+
         }
     }
     addEventListener("keydown", function (e) {
@@ -102,10 +158,33 @@ function setListeners() {
         if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
             extCode = '22';
         }
-        let element = document.getElementById('keyEn' + e.keyCode + extCode);
+        let swither = 'keyEn';
+
+        if (currentKeyboardEng) {
+            swither = currentKeyboardUppercase ? 'keyUpE' : 'keyEn';
+        } else {
+            swither = currentKeyboardUppercase ? 'keyUpR' : 'keyRu';
+        }
+        //currentKeyboardEng
+        //currentKeyboardUppercase
+
+        let element = document.getElementById(swither + e.keyCode + extCode);
 
         if (element) {
             element.classList.toggle('keyPress1');
+        }
+        if (e.keyCode === 16 || e.keyCode === 1622) {
+            switchKeyboardCase();
+        }
+
+        if (e.keyCode === 17) { pressedCtrl = 1; }
+        if (e.keyCode === 18) { pressedAlt = 1; }
+
+        if (pressedCtrl > 0 && pressedAlt > 0) {
+            currentKeyboardEng = !currentKeyboardEng;
+            switchLanguage();
+            pressedCtrl = 0;
+            pressedAlt = 0;
         }
     });
     addEventListener("keyup", function (e) {
@@ -113,9 +192,30 @@ function setListeners() {
         if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
             extCode = '22';
         }
-        let element = document.getElementById('keyEn' + e.keyCode + extCode);
+
+        let swither = 'keyEn';
+
+        if (currentKeyboardEng) {
+            swither = currentKeyboardUppercase ? 'keyUpE' : 'keyEn';
+        } else {
+            swither = currentKeyboardUppercase ? 'keyUpR' : 'keyRu';
+        }
+
+        let element = document.getElementById(swither + e.keyCode + extCode);
         if (element) {
             element.classList.toggle('keyPress1');
+        }
+        if (e.keyCode === 16 || e.keyCode === 1622) {
+            switchKeyboardCase();
+            currentKeyboardUppercase = false;
+        }
+
+        pressedCtrl = 0;
+        pressedAlt = 0;
+
+        if (e.keyCode === 20) {
+            switchKeyboardCase();
+            currentKeyboardUppercase = !currentKeyboardUppercase;
         }
     });
 }
