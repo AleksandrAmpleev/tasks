@@ -70,8 +70,8 @@
         { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 1722, options: { spKey: true, extStyles: ['ctrlKey'] } }]
 ];
 
-const txtArea = document.querySelector('#textareaId');
-const keyboard = document.querySelector('#keyboadId');
+const virtualKB = document.querySelector('#virtualKB');
+let keyboard = undefined; 
 
 const constKeyEngU = 'keyUpE';
 const constKeyEngR = 'keyUpR';
@@ -83,6 +83,10 @@ let currentKeyboardUppercase = false;
 
 let pressedCtrl = 0;
 let pressedAlt = 0;
+
+function appendLitera(litera) {
+    //appendLitera.
+}
 
 function getSwither() {
     let swither = constKeyEng;
@@ -233,6 +237,28 @@ function setListeners() {
 }
 
 function drawKeyboard() {
+    let areaTxt = document.createElement('textarea');
+    areaTxt.id = 'textareaId';
+    areaTxt.className = 'textareaSt';
+    areaTxt.rows = '5';
+    areaTxt.cols = '50';
+    virtualKB.appendChild(areaTxt);
+
+    keyboard = document.createElement('div');
+    keyboard.className = 'keyboard';
+    keyboard.id = 'keyboadId';
+    virtualKB.appendChild(keyboard);
+
+    let pDescriptions1 = document.createElement('p');
+    pDescriptions1.className = 'description';
+    pDescriptions1.innerText = 'Клавиатура создана в операционной системе Windows';
+    virtualKB.appendChild(pDescriptions1);
+
+    let pDescriptions2 = document.createElement('p');
+    pDescriptions2.className = 'language';
+    pDescriptions2.innerText = 'Для переключения языка комбинация: левыe ctrl + alt';
+    virtualKB.appendChild(pDescriptions2);
+    
     for (var j = 0; j < arrKeyBoard.length; j++) {
         let rowDiv = document.createElement('div');
         rowDiv.classList.add('row');
