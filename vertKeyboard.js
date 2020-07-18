@@ -69,7 +69,7 @@
         { eng: '→', rus: '→', upE: '→', upR: '→', keycode: 39, options: { spKey: true } },
         { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 1722, options: { spKey: true, extStyles: ['ctrlKey'] } }]
 ];
-const excludeSimbols = [8, 9, 13, 16, 17, 18, 19, 20, 37, 38, 39, 40, 46, 91];
+const excludeSimbols = [8, 9, 13, 16, 17, 18, 19, 20, 32, 37, 38, 39, 40, 46, 91];
 const virtualKB = document.querySelector('#virtualKB');
 let keyboard = undefined;
 let txtArea = undefined;
@@ -91,13 +91,34 @@ function appendLitera(litera, element) {
             txtArea.value += element.innerText;
         }
 
-        if (litera.keyCode === 8) {
-            txtArea.value = txtArea.value.substring(0, txtArea.value.length - 1);
+        switch (litera.keyCode) {
+            case 8:
+                txtArea.value = txtArea.value.substring(0, txtArea.value.length - 1);
+                break;
+            case 9:
+                txtArea.value += '\t';
+                break;
+            case 13:
+                txtArea.value += '\n';
+                break;
+            case 32:
+                txtArea.value += ' ';
+                break;
+            default:
+                break;
         }
 
-        if (litera.keyCode === 13) {
-            txtArea.value += '\n';
-        }
+        //if (litera.keyCode === 8) {
+        //    txtArea.value = txtArea.value.substring(0, txtArea.value.length - 1);
+        //} else {
+        //    if (litera.keyCode === 13) {
+        //        txtArea.value += '\n';
+        //    } else {
+        //        if (litera.keyCode === 32) {
+        //            txtArea.value += ' ';
+        //        }
+        //    }
+        //} 
     }    
 }
 
@@ -195,25 +216,29 @@ function setListeners() {
 
         }
     }
-    addEventListener("keydown", function (e) {
+    addEventListener("keydown", function (ed) {
         let extCode = '';
-        if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
+        if ((ed.keyCode === 16 || ed.keyCode === 17 || ed.keyCode === 18) && ed.location === 2) {
             extCode = '22';
         }
         let swither = getSwither();
-        let element = document.getElementById(swither + e.keyCode + extCode);
+        let element = document.getElementById(swither + ed.keyCode + extCode);
 
-        appendLitera(e, element);
+        appendLitera(ed, element);
 
         if (element) {
             element.classList.toggle('keyPress1');
         }
-        if (e.keyCode === 16 || e.keyCode === 1622) {
+        if (ed.keyCode === 16 || ed.keyCode === 1622) {
             switchKeyboardCase();
         }
 
-        if (e.keyCode === 17) { pressedCtrl = 1; }
-        if (e.keyCode === 18) { pressedAlt = 1; }
+        if (ed.keyCode === 17) {
+            pressedCtrl = 1;
+        }
+        if (ed.keyCode === 18) {
+            pressedAlt = 1;
+        }
 
         if (pressedCtrl > 0 && pressedAlt > 0) {
             currentKeyboardEng = !currentKeyboardEng;
@@ -222,17 +247,17 @@ function setListeners() {
             pressedAlt = 0;
         }
     });
-    addEventListener("keyup", function (e) {
+    addEventListener("keyup", function (eU) {
         let extCode = '';
-        if ((e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 18) && e.location === 2) {
+        if ((eU.keyCode === 16 || eU.keyCode === 17 || eU.keyCode === 18) && eU.location === 2) {
             extCode = '22';
         }
         let swither = getSwither();
-        let element = document.getElementById(swither + e.keyCode + extCode);
+        let element = document.getElementById(swither + eU.keyCode + extCode);
         if (element) {
-            element.classList.toggle('keyPress1');
+            element.classList.remove('keyPress1'); //toggle('keyPress1');
         }
-        if (e.keyCode === 16 || e.keyCode === 1622) {
+        if (eU.keyCode === 16 || eU.keyCode === 1622) {
             switchKeyboardCase();
             currentKeyboardUppercase = false;
         }
@@ -240,15 +265,15 @@ function setListeners() {
         pressedCtrl = 0;
         pressedAlt = 0;
 
-        if (e.keyCode === 20) {
+        if (eU.keyCode === 20) {
             switchKeyboardCase();
             currentKeyboardUppercase = !currentKeyboardUppercase;
         }
-        if (e.keyCode === 17) {
-            clearKey(e.keyCode, extCode);
+        if (eU.keyCode === 17) {
+            clearKey(eU.keyCode, extCode);
         }
-        if (e.keyCode === 18) {
-            clearKey(e.keyCode, extCode);
+        if (eU.keyCode === 18) {
+            clearKey(eU.keyCode, extCode);
         }
     });
 }
