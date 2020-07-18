@@ -62,14 +62,14 @@
         { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 17, options: { spKey: true, extStyles: ['ctrlKey'] } },
         { eng: 'Win', rus: 'Win', upE: 'Win', upR: 'Win', keycode: 91, options: { spKey: true } },
         { eng: 'Alt', rus: 'Alt', upE: 'Alt', upR: 'Alt', keycode: 18, options: { spKey: true, extStyles: ['altKey'] } },
-        { eng: '', rus: '', upE: '', upR: '', keycode: 32, options: { spKey: true, extStyles: ['spaceKey'] } },
+        { eng: ' ', rus: ' ', upE: ' ', upR: ' ', keycode: 32, options: { spKey: true, extStyles: ['spaceKey'] } },
         { eng: 'Alt', rus: 'Alt', upE: 'Alt', upR: 'Alt', keycode: 1822, options: { spKey: true, extStyles: ['altKey'] } },
         { eng: '←', rus: '←', upE: '←', upR: '←', keycode: 37, options: { spKey: true } },
         { eng: '↓', rus: '↓', upE: '↓', upR: '↓', keycode: 40, options: { spKey: true } },
         { eng: '→', rus: '→', upE: '→', upR: '→', keycode: 39, options: { spKey: true } },
         { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 1722, options: { spKey: true, extStyles: ['ctrlKey'] } }]
 ];
-const excludeSimbols = [8, 9, 16, 17, 18, 19, 20, 37, 38, 39, 46, 91];
+const excludeSimbols = [8, 9, 13, 16, 17, 18, 19, 20, 37, 38, 39, 40, 46, 91];
 const virtualKB = document.querySelector('#virtualKB');
 let keyboard = undefined;
 let txtArea = undefined;
@@ -86,14 +86,19 @@ let pressedCtrl = 0;
 let pressedAlt = 0;
 
 function appendLitera(litera, element) {
-    if (excludeSimbols.lastIndexOf(litera.keyCode) === -1 || litera.keyCode < 1000) {
-        txtArea.value += litera.key;
-    }
+    if (element) {
+        if (excludeSimbols.lastIndexOf(litera.keyCode) === -1 && litera.keyCode < 1000) {
+            txtArea.value += element.innerText;
+        }
 
-    if (litera.keyCode === 8) {
-        //let str = txtArea.value.toString();
-        //txtArea.value = str.slice(txtArea.value.toString().length - 1, txtArea.value.toString().length);
-    }
+        if (litera.keyCode === 8) {
+            txtArea.value = txtArea.value.substring(0, txtArea.value.length - 1);
+        }
+
+        if (litera.keyCode === 13) {
+            txtArea.value += '\n';
+        }
+    }    
 }
 
 function getSwither() {
@@ -154,7 +159,15 @@ function switchLanguage() {
 
 function keyClick(e) {
     let element = document.getElementById(e.target.id);
-    appendLitera(e.target, element);    
+    let sId = e.target.id.toString()
+        .replace(new RegExp(constKeyEngU, 'g'), '')
+        .replace(new RegExp(constKeyEngR, 'g'), '')
+        .replace(new RegExp(constKeyEng, 'g'), '')
+        .replace(new RegExp(constKeyRU, 'g'), '');
+    let literaObj = {};
+    literaObj.key = e.target.innerText;
+    literaObj.keyCode = parseInt(sId);
+    appendLitera(literaObj, element);    
 }
 
 function clearKey(code, extCode) {
