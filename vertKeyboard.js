@@ -69,7 +69,7 @@
         { eng: '→', rus: '→', upE: '→', upR: '→', keycode: 39, options: { spKey: true } },
         { eng: 'Ctrl', rus: 'Ctrl', upE: 'Ctrl', upR: 'Ctrl', keycode: 1722, options: { spKey: true, extStyles: ['ctrlKey'] } }]
 ];
-const excludeSimbols = [8, 9, 13, 16, 17, 18, 19, 20, 32, 37, 38, 39, 40, 46, 91];
+const excludeSimbols = [8, 9, 13, 16, 17, 18, 19, 20, 32];
 const virtualKB = document.querySelector('#virtualKB');
 let keyboard = undefined;
 let txtArea = undefined;
