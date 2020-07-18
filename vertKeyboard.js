@@ -81,6 +81,8 @@ const constKeyRU = 'keyRu';
 
 let currentKeyboardEng = true;
 let currentKeyboardUppercase = false;
+let capsLockPressed = false;
+let previusKey = -1;
 
 let pressedCtrl = 0;
 let pressedAlt = 0;
@@ -107,18 +109,6 @@ function appendLitera(litera, element) {
             default:
                 break;
         }
-
-        //if (litera.keyCode === 8) {
-        //    txtArea.value = txtArea.value.substring(0, txtArea.value.length - 1);
-        //} else {
-        //    if (litera.keyCode === 13) {
-        //        txtArea.value += '\n';
-        //    } else {
-        //        if (litera.keyCode === 32) {
-        //            txtArea.value += ' ';
-        //        }
-        //    }
-        //} 
     }    
 }
 
@@ -162,6 +152,8 @@ function switchKeyboardCase() {
     for (let i = 0; i < elementsNeedToUnHide.length; i++) {
         elementsNeedToUnHide[i].classList.toggle('hidden');
     }
+
+    currentKeyboardUppercase = !currentKeyboardUppercase;
 }
 
 function switchLanguage() {
@@ -191,12 +183,19 @@ function keyClick(e) {
     appendLitera(literaObj, element);    
 }
 
-function clearKey(code, extCode) {
-    let swither = getSwither();
-    let elementForClear = document.getElementById(swither + code + extCode);
-    if (elementForClear) {
-        elementForClear.classList.remove('keyPress1');
-    }
+function clearKey(code) {
+     let a = [constKeyEngU, constKeyEngR, constKeyEng, constKeyRU];
+
+    for (var i = 0; i < a.length; i++) {
+        let elementForClear = document.getElementById(a[i] + code);
+        if (elementForClear) {
+            elementForClear.classList.remove('keyPress1');
+        }  
+        let elementForClearRight = document.getElementById(a[i] + code + '22');
+        if (elementForClearRight) {
+            elementForClearRight.classList.remove('keyPress1');
+        }  
+    }     
 }
 
 function setListeners() {
@@ -227,10 +226,14 @@ function setListeners() {
         appendLitera(ed, element);
 
         if (element) {
-            element.classList.toggle('keyPress1');
+            element.classList.add('keyPress1');
         }
-        if (ed.keyCode === 16 || ed.keyCode === 1622) {
+        if ((ed.keyCode === 16 || ed.keyCode === 1622) && !(previusKey === 16 || previusKey === 1622)) {
             switchKeyboardCase();
+        }
+
+        if (ed.keyCode === 20) {
+            clearKey(16);
         }
 
         if (ed.keyCode === 17) {
@@ -246,6 +249,9 @@ function setListeners() {
             pressedCtrl = 0;
             pressedAlt = 0;
         }
+
+        previusKey = ed.keyCode;
+        ed.preventDefault();
     });
     addEventListener("keyup", function (eU) {
         let extCode = '';
@@ -255,11 +261,11 @@ function setListeners() {
         let swither = getSwither();
         let element = document.getElementById(swither + eU.keyCode + extCode);
         if (element) {
-            element.classList.remove('keyPress1'); //toggle('keyPress1');
+            element.classList.remove('keyPress1'); 
         }
-        if (eU.keyCode === 16 || eU.keyCode === 1622) {
+        if ((eU.keyCode === 16 || eU.keyCode === 1622) && currentKeyboardUppercase !== capsLockPressed) {
             switchKeyboardCase();
-            currentKeyboardUppercase = false;
+            clearKey(eU.keyCode);
         }
 
         pressedCtrl = 0;
@@ -267,14 +273,17 @@ function setListeners() {
 
         if (eU.keyCode === 20) {
             switchKeyboardCase();
-            currentKeyboardUppercase = !currentKeyboardUppercase;
+            capsLockPressed = !capsLockPressed;
+            currentKeyboardUppercase = capsLockPressed;
         }
         if (eU.keyCode === 17) {
-            clearKey(eU.keyCode, extCode);
+            clearKey(eU.keyCode);
         }
         if (eU.keyCode === 18) {
-            clearKey(eU.keyCode, extCode);
+            clearKey(eU.keyCode);
         }
+        previusKey = -1;
+        eU.preventDefault();
     });
 }
 
@@ -295,7 +304,7 @@ function drawKeyboard() {
 
     let pDescriptions1 = document.createElement('p');
     pDescriptions1.className = 'description';
-    pDescriptions1.innerText = 'Клавиатура создана в операционной системе Windows';
+    pDescriptions1.innerText = 'Клавиатура создана в операционной системе Windows X';
     virtualKB.appendChild(pDescriptions1);
 
     let pDescriptions2 = document.createElement('p');
