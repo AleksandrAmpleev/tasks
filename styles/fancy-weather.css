@@ -1,0 +1,28 @@
+﻿body {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h2 {
+    border-style: solid;
+    border-color: fuchsia;
+    border-width: 2px;
+}
+
+.blockGroupButton {
+    display: flex;
+    justify-content: space-between;
+}
+
+.widget {
+    display: flex;
+    justify-content: space-between;
+}
+
+#map {
+    width: 500px;
+    height: 500px;
+    padding: 0;
+    margin: 0;
+}
+
