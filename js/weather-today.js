@@ -1,44 +1,52 @@
-﻿//api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={your api key}//247d704aaa926248583db53c5abfad51
-
+﻿
 function GetCurrentDateTime() {
     let now = new Date();
     let year = now.getFullYear();
-    //Получить год(из 4 цифр)
     let mnth = now.getMonth();
-    //Получить месяц, от 0 до 11.
+    
     let date = now.getDate();
-    //Получить число месяца, от 1 до 31.
+    
     let hr = now.getHours();
     let mn = now.getMinutes();
-    //Получить соответствующие компоненты.
-    //Не getYear(), а getFullYear()
-    //Некоторые браузеры реализуют нестандартный метод getYear().Где - то он возвращает только две цифры из года, где - то четыре.Так или иначе, этот метод отсутствует в стандарте JavaScript.Не используйте его.Для получения года есть getFullYear().
-
-    //Дополнительно можно получить день недели:
+    let s = now.getSeconds();
+    
     let dayOfWeek = now.getDay();
 
-    return dayOfWeek + ' ' + date + ' ' + mnth + ' ' + hr + ':' + mn;
+    let timePanel = document.querySelector('#timerId');
+    timePanel.innerText = dayOfWeek + ' ' + date + ' ' + mnth + ' ' + hr + ':' + mn + ':' + s;
 }
 
 function controlWeatherTodayLoad() {
     getGeoData();
 
     let weatherToday = document.createElement('div');
-    weatherToday.className = 'weatherToday';
+    weatherToday.className = '';
     weatherToday.id = 'weatherTodayId';
         
     let weatherTodayHeader = document.createElement('h2');
     weatherTodayHeader.innerText = '2. Weather today';
     weatherTodayHeader.id = 'weatherTodayId';
 
-    let weatherTodayPanel = document.createElement('div');
-    weatherTodayPanel.innerText = '';
-    weatherTodayPanel.id = 'weatherTodayPanelId';
-    weatherTodayHeader.appendChild(weatherTodayPanel);
+    //let weatherTodayPanel = document.createElement('div');
+    //weatherTodayPanel.innerText = '';
+    //weatherTodayPanel.id = 'weatherTodayPanelId';
+    //weatherTodayHeader.appendChild(weatherTodayPanel);
     
-    let currentDateTime = document.createElement('h3');
-    currentDateTime.innerText = GetCurrentDateTime();
-    currentDateTime.id = 'currentDateTimeId';
+    weatherToday.appendChild(weatherTodayHeader);
+
+    let container = document.createElement('div');
+    container.id = 'weatherTodayPanelId';
+    container.className = 'widget-part';
+
+    let timer = document.createElement('div');
+    timer.id = 'timerId';
+    timer.className = 'widget-part-weather-today';
+    timer.innerText = '1111';
+    //container.appendChild(timer);
+
+    //let currentDateTime = document.createElement('h3');
+    //currentDateTime.innerText = GetCurrentDateTime();
+    //currentDateTime.id = 'currentDateTimeId';
 
     let todayDataPanel = document.createElement('div');
     todayDataPanel.innerText = '';
@@ -48,10 +56,13 @@ function controlWeatherTodayLoad() {
     todayDatah2.innerText = '';
     todayDatah2.id = 'todayDatah2Id';
     todayDataPanel.appendChild(todayDatah2);
-    
-    weatherToday.appendChild(weatherTodayHeader);
-    weatherToday.appendChild(currentDateTime);
-    weatherToday.appendChild(todayDataPanel);
+
+    //container.appendChild(weatherTodayHeader);
+    //container.appendChild(currentDateTime);
+    container.appendChild(todayDataPanel);
+
+    weatherToday.appendChild(timer);
+    weatherToday.appendChild(container);    
 
     return weatherToday;
 }

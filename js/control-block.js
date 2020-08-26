@@ -17,16 +17,15 @@ function changeLanguageClick(e) {
 
 function controlBlockLoad() {
     let block = document.createElement('div');
-    block.className = 'block';
+    block.className = '';
     block.id = 'blockId';
-    //block.className = ' widget';
 
     let blockHeader = document.createElement('h2');
     blockHeader.innerText = '1. Block controll';
     block.appendChild(blockHeader);
 
     let blockGroupButton = document.createElement('div');
-    blockGroupButton.className = 'blockGroupButton';
+    blockGroupButton.className = 'widget-part';
     blockGroupButton.id = 'blockGroupButtonId';
 
     let refresh = document.createElement('input');

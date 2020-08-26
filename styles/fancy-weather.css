@@ -16,7 +16,59 @@ h2 {
 
 .widget {
     display: flex;
+    /*justify-content: space-between;*/
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 7px;
+    background-color: rgba(0,0,0,.2);
+    color: #ffffff; 
+}
+
+.widget-part-weather-today {
+    display: flex;
     justify-content: space-between;
+    margin: 5px;
+    padding: 20px;
+    font-size: 32px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.3);
+    color: #ffffff;
+    min-height: 70px;
+}
+
+.widget-part {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.3);
+    color: #ffffff;
+    min-height: 70px;
+}
+
+.widget-part-timer {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.3);
+    color: #ffffff;
+    min-height: 50px;
+}
+
+.fancy-days {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.3);
+    color: #ffffff;
+    min-height: 50px;
 }
 
 #map {

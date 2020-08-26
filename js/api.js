@@ -21,12 +21,16 @@ function exctractGeoData(o) {
 
 function exctractWeatherData(o) {
     data = [];
-    let todayDatah2Id = document.querySelector('#todayDatah2Id');
+    let todayDatah2Id = document.querySelector('#weatherTodayPanelId');
     let currentTimeObj = '';
     let nowTime = new Date();
 
     o.list.forEach(function (item, i, arr) {
         let d = new Date(item.dt_txt);
+        
+        let year = d.getFullYear();
+        let mnth = d.getMonth();
+        let dat = d.getDate();
 
         let t = {
             id: i,
@@ -38,7 +42,7 @@ function exctractWeatherData(o) {
             feels_like: item.main.feels_like,
             time: d,
             timeStr: item.dt_txt,
-            dt: d.getDay().toString() + '-' + d.getMonth() + '-' + d.getFullYear()
+            dt: dat.toString() + '-' + mnth + '-' + year
         };
 
         if ((d - nowTime) < 0) {
@@ -49,9 +53,9 @@ function exctractWeatherData(o) {
     });
 
 
-    todayDatah2Id.innerText = 'temperatura = ' + currentTimeObj.temp + '°C, vlajnost = ' + currentTimeObj.humidity + '%, jchucheniya =' + currentTimeObj.feels_like + '°C, desc = ' + currentTimeObj.description + ', wind = ' + currentTimeObj.wind;
+    todayDatah2Id.innerText = todayDatah2Id.innerText + ' temperatura = ' + currentTimeObj.temp + '°C, vlajnost = ' + currentTimeObj.humidity + '%, jchucheniya =' + currentTimeObj.feels_like + '°C, desc = ' + currentTimeObj.description + ', wind = ' + currentTimeObj.wind;
 
-    let indexDay = '';
+    let indexDay = currentTimeObj.dt;
     let ind = 0;
     data.forEach(function (item, i, arr) {
         let dayTag = document.querySelector('#DayPanelId' + ind);
@@ -59,13 +63,15 @@ function exctractWeatherData(o) {
         if (indexDay !== item.dt) {
             ind++;
             indexDay = item.dt;
+        } else {
+            if (dayTag) {
+                let localRecordDay = document.createElement('div');
+                localRecordDay.innerText = '' + item.timeStr + ': temperatura = ' + item.temp + '°C, vlajnost = ' + item.humidity + '%, jchucheniya =' + item.feels_like + '°C, desc = ' + item.description + ', wind = ' + item.wind;
+                dayTag.appendChild(localRecordDay);
+            }
         }
 
-        if (dayTag) {
-            let localRecordDay = document.createElement('div');
-            localRecordDay.innerText = '' + item.timeStr + ': temperatura = ' + item.temp + '°C, vlajnost = ' + item.humidity + '%, jchucheniya =' + item.feels_like + '°C, desc = ' + item.description + ', wind = ' + item.wind;
-            dayTag.appendChild(localRecordDay);
-        }
+        
     });
 }
 

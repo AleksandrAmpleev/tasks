@@ -1,7 +1,7 @@
 ﻿
 function controlWeather3DaysLoad() {
     let weather3Days = document.createElement('div');
-    weather3Days.className = 'weather3d';
+    weather3Days.className = '';
     weather3Days.id = 'weather3dId';
     //weather3Days.className = ' widget';
 
@@ -11,7 +11,7 @@ function controlWeather3DaysLoad() {
 
 
     let weather3DaysPanel = document.createElement('div');
-    weather3DaysPanel.innerText = '';
+    weather3DaysPanel.className = 'widget-part';
     weather3DaysPanel.id = 'weather3DaysPanelId';
     
 
@@ -20,15 +20,17 @@ function controlWeather3DaysLoad() {
 
     let firstDayPanel = document.createElement('div');
     firstDayPanel.innerText = '';
+    firstDayPanel.className = 'fancy-days';
     firstDayPanel.id = 'DayPanelId1';
 
     let secondDayPanel = document.createElement('div');
     secondDayPanel.innerText = '';
+    secondDayPanel.className = 'fancy-days';
     secondDayPanel.id = 'DayPanelId2';
     
-
     let threeDayPanel = document.createElement('div');
     threeDayPanel.innerText = '';
+    threeDayPanel.className = 'fancy-days';
     threeDayPanel.id = 'DayPanelId3';
 
     weather3daysSubHeaderh3Id.appendChild(firstDayPanel);

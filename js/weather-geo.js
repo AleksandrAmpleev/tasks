@@ -2,7 +2,7 @@
 
 function controlGeoLoad() {
     let geo = document.createElement('div');
-    geo.className = 'geo';
+    geo.className = '';
     geo.id = 'geoId';
     //geo.className = ' widget';
 
@@ -16,7 +16,7 @@ function controlGeoLoad() {
     //geo.appendChild(geoMap);
 
     let geoMapY = document.createElement('div');
-    geoMapY.innerText = '';
+    geoMapY.className = 'widget-part';
     geoMapY.id = 'yandexmap';
     geoMapY.style = "width: 500px; height: 500px";
     geo.appendChild(geoMapY);
