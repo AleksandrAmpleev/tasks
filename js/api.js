@@ -16,6 +16,7 @@ function exctractGeoData(o) {
     weatherTodayPanel.innerText = o.city + ', ' + o.country;
 
     getWeather();
+    getMap(o.lat, o.lon);
 }
 
 function exctractWeatherData(o) {
@@ -40,7 +41,7 @@ function exctractWeatherData(o) {
             dt: d.getDay().toString() + '-' + d.getMonth() + '-' + d.getFullYear()
         };
 
-        if ((d - nowTime)<0) {
+        if ((d - nowTime) < 0) {
             currentTimeObj = t;
         }
 
@@ -59,18 +60,24 @@ function exctractWeatherData(o) {
             ind++;
             indexDay = item.dt;
         }
-        
+
         if (dayTag) {
             let localRecordDay = document.createElement('div');
             localRecordDay.innerText = '' + item.timeStr + ': temperatura = ' + item.temp + '°C, vlajnost = ' + item.humidity + '%, jchucheniya =' + item.feels_like + '°C, desc = ' + item.description + ', wind = ' + item.wind;
             dayTag.appendChild(localRecordDay);
         }
-    });     
+    });
 }
 
 
 function exctractMapData(o) {
-
+    //function initMap() {
+    //    map = new ymaps.Map("yandexmap", {
+    //        center: [56.039017, 92.894853],
+    //        zoom: 16
+    //    });
+    //}
+    //ymaps.ready(initMap);
 }
 
 function getFoto() {
@@ -102,6 +109,29 @@ function getWeather() {
     xhrWeathr.open('GET', weathrEndpoint, true);
 
     xhrWeathr.send();
+}
+
+function getMap(lat, lon) {
+
+    function initMap() {
+        map = new ymaps.Map("yandexmap", {
+            center: [lat, lon],
+            zoom: 10
+        });
+    }
+    ymaps.ready(initMap);
+    ////let weathrEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=' + countryCode.toLocaleLowerCase() + '&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ua&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ru&units=metric&APPID=a9a3a62789de80865407c0452e9d1c27';
+    //let mapEndPoint = 'https://api.opencagedata.com/geocode/v1/json?q=Minsk&key=c6b6da0f80f24b299e08ee1075f81aa5&pretty=1&no_annotations=1';
+    //let xhrMap = new XMLHttpRequest();
+
+    //xhrMap.onreadystatechange = function (data) {
+    //    if (this.readyState === 4 && this.status === 200 && this.responseText) {
+    //        var response = JSON.parse(this.responseText);
+    //        exctractMapData(response);
+    //    }
+    //};
+    //xhrMap.open('GET', mapEndPoint, true);
+    //xhrMap.send();
 }
 
 function getGeoData() {
