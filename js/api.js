@@ -12,9 +12,21 @@ function exctractGeoData(o) {
     latityde = o.lat;
     longityde = o.lon;
 
-    let weatherTodayPanel = document.querySelector('#weatherTodayPanelId');
+    let weatherTodayPanel = document.querySelector('#locationPanelId');
     weatherTodayPanel.innerText = o.city + ', ' + o.country;
 
+    for (var i = 1; i <= 3; i++) {
+        let forRemove = document.querySelector('#DayPanelId' + i);
+        while (forRemove.firstChild) {
+            forRemove.removeChild(forRemove.firstChild);
+        }
+    }
+
+    let forRemoveMap = document.querySelector('#yandexmap');
+    while (forRemoveMap.firstChild) {
+        forRemoveMap.removeChild(forRemoveMap.firstChild);
+    }
+    
     getWeather();
     getMap(o.lat, o.lon);
 }
@@ -52,8 +64,12 @@ function exctractWeatherData(o) {
         data.push(t);
     });
 
-
-    todayDatah2Id.innerText = todayDatah2Id.innerText + ' temperatura = ' + currentTimeObj.temp + '°C, vlajnost = ' + currentTimeObj.humidity + '%, jchucheniya =' + currentTimeObj.feels_like + '°C, desc = ' + currentTimeObj.description + ', wind = ' + currentTimeObj.wind;
+    if (termoFarengeit) {
+        todayDatah2Id.innerText = ' t = ' + (currentTimeObj.temp + 49).toString() + '°F, vl = ' + currentTimeObj.humidity + '%, î =' + (currentTimeObj.feels_like + 49).toString() + '°F, desc = ' + currentTimeObj.description + ', w = ' + currentTimeObj.wind;
+    } 
+    else {
+        todayDatah2Id.innerText = ' t = ' + currentTimeObj.temp + '°C, vl = ' + currentTimeObj.humidity + '%, î =' + currentTimeObj.feels_like + '°C, desc = ' + currentTimeObj.description + ', w = ' + currentTimeObj.wind;
+    }        
 
     let indexDay = currentTimeObj.dt;
     let ind = 0;
@@ -66,7 +82,14 @@ function exctractWeatherData(o) {
         } else {
             if (dayTag) {
                 let localRecordDay = document.createElement('div');
-                localRecordDay.innerText = '' + item.timeStr + ': temperatura = ' + item.temp + '°C, vlajnost = ' + item.humidity + '%, jchucheniya =' + item.feels_like + '°C, desc = ' + item.description + ', wind = ' + item.wind;
+
+                if (termoFarengeit) {
+                    localRecordDay.innerText = currentLang[5][item.time.getDay()] + ' ' + item.time.getDate() + ' ' + currentLang[4][item.time.getMonth()] + ' ' + item.time.getHours() + ':' + item.time.getMinutes() + ' ' + (item.temp + 49).toString() + '°F, ' + item.humidity + '%, ' + ' ' + item.description;
+                } else {
+                    localRecordDay.innerText = currentLang[5][item.time.getDay()] + ' ' + item.time.getDate() + ' ' + currentLang[4][item.time.getMonth()] + ' ' + item.time.getHours() + ':' + item.time.getMinutes() + ' ' + item.temp + '°C, ' + item.humidity + '%, ' + ' ' + item.description;
+                }
+
+                
                 dayTag.appendChild(localRecordDay);
             }
         }
@@ -77,13 +100,6 @@ function exctractWeatherData(o) {
 
 
 function exctractMapData(o) {
-    //function initMap() {
-    //    map = new ymaps.Map("yandexmap", {
-    //        center: [56.039017, 92.894853],
-    //        zoom: 16
-    //    });
-    //}
-    //ymaps.ready(initMap);
 }
 
 function getFoto() {
@@ -103,7 +119,7 @@ function getFoto() {
 }
 
 function getWeather() {
-    let weathrEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=' + countryCode.toLocaleLowerCase() + '&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ua&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ru&units=metric&APPID=a9a3a62789de80865407c0452e9d1c27';
+    let weathrEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=' + currentLang[0] + '&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ua&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ru&units=metric&APPID=a9a3a62789de80865407c0452e9d1c27';
     let xhrWeathr = new XMLHttpRequest();
 
     xhrWeathr.onreadystatechange = function (data) {
@@ -126,18 +142,6 @@ function getMap(lat, lon) {
         });
     }
     ymaps.ready(initMap);
-    ////let weathrEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=' + countryCode.toLocaleLowerCase() + '&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ua&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ru&units=metric&APPID=a9a3a62789de80865407c0452e9d1c27';
-    //let mapEndPoint = 'https://api.opencagedata.com/geocode/v1/json?q=Minsk&key=c6b6da0f80f24b299e08ee1075f81aa5&pretty=1&no_annotations=1';
-    //let xhrMap = new XMLHttpRequest();
-
-    //xhrMap.onreadystatechange = function (data) {
-    //    if (this.readyState === 4 && this.status === 200 && this.responseText) {
-    //        var response = JSON.parse(this.responseText);
-    //        exctractMapData(response);
-    //    }
-    //};
-    //xhrMap.open('GET', mapEndPoint, true);
-    //xhrMap.send();
 }
 
 function getGeoData() {
@@ -147,7 +151,6 @@ function getGeoData() {
     xhr.onreadystatechange = function (data) {
         if (this.readyState === 4 && this.status === 200 && this.responseText) {
             var response = JSON.parse(this.responseText);
-            // let response = JSON.stringify(this.responseText);
             exctractGeoData(response);
         }
     };
@@ -156,7 +159,7 @@ function getGeoData() {
 }
 
 function pageLoad() {
-    getGeoData();
+    getGeoData();    
 }
 
 window.onload = pageLoad;

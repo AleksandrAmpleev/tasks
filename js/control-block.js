@@ -1,6 +1,26 @@
-﻿const languages = [['en', 'en_EN'], ['ru', 'ru_RU'], ['be', 'be_BE']];
-let termoFarengeit = false; 
-let currentLang = languages[0]; 
+﻿const languages = [
+    ['en', 'en_EN',
+        ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+        ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    ],
+    ['ru', 'ru_RU',
+        ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+        ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+        ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Ноя', 'Дек'],
+        ['Воск', 'Пон', 'Вт', 'Ср', 'Чет', 'Пят', 'Суб']
+    ],
+    ['be', 'be_BE',
+        ['Нядзеля','Панядзелак', 'Аўторак', 'Серада', 'Чацвер', 'Пятніца', 'Субота'],
+        ['студзень', 'лютага', 'сакавік', 'красавік', 'Май', 'Чэрвень', 'ліпеня', 'жнівень', 'верасень', 'кастрычніка', 'лістапада', 'снежні'],
+        ['студз', 'люта', 'сакав', 'крас', 'Май', 'Чэрв', 'ліп', 'жні', 'вер', 'каст', 'ліст', 'снеж'],
+        ['Няд','Пан', 'Аўт', 'Сер', 'Чац', 'Пят', 'Суб']
+    ]
+    ];
+
+let termoFarengeit = false;
+let currentLang = languages[0];
 
 function refreshClick(e) {
     controlbackgroundPictures();
@@ -9,10 +29,12 @@ function refreshClick(e) {
 
 function termoClick(e) {
     termoFarengeit = !termoFarengeit;
+    getGeoData();
 }
 
 function changeLanguageClick(e) {
-    currentLang = languages[e.target.selectedIndex]; 
+    currentLang = languages[e.target.selectedIndex];
+    getGeoData();
 }
 
 function controlBlockLoad() {
@@ -34,8 +56,7 @@ function controlBlockLoad() {
     refresh.type = 'button';
     refresh.value = 'refresh';
     refresh.addEventListener('click', refreshClick);
-
-
+    
     let language = document.createElement('input');
     language.className = 'language';
     language.id = 'languageId';
@@ -51,15 +72,7 @@ function controlBlockLoad() {
         opt.innerHTML = languages[i][0];
         languageSel.add(opt);
     }
-
-    //for (element in languages) {
-    //    let opt = document.createElement("option");
-    //    opt.value = index; //index;
-    //    opt.innerHTML = element[index];
-    //    languageSel.add(opt);
-    //    index++;
-    //}
-
+        
     let gradsWrapperControlBlock = document.createElement('div');
     gradsWrapperControlBlock.className = 'slideThree';
     gradsWrapperControlBlock.id = 'slideThreeId';
@@ -78,7 +91,7 @@ function controlBlockLoad() {
 
     gradsWrapperControlBlock.appendChild(gradsInputControlBlock);
     gradsWrapperControlBlock.appendChild(gradsLabelControlBlock);
-       
+
     let search = document.createElement('input');
     search.className = 'search';
     search.id = 'searchId';
@@ -86,18 +99,12 @@ function controlBlockLoad() {
     blockGroupButton.appendChild(refresh);
     blockGroupButton.appendChild(language);
     blockGroupButton.appendChild(languageSel);
-    //blockGroupButton.appendChild(gradsStreet);
-    //blockGroupButton.appendChild(gradsStreetLabel);
     blockGroupButton.appendChild(gradsWrapperControlBlock);
     blockGroupButton.appendChild(search);
     block.appendChild(blockGroupButton);
 
-    //let termo = document.getElementById('slideThree');
-    //termo.addEventListener('click', termoClick);
     return block;
 }
-//<input type="submit" name="send" value="Отправить" />
-
 //window.onload = pageLoad;
 
 //1. Блок контроля

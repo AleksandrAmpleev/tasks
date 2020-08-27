@@ -21,6 +21,13 @@ function controlGeoLoad() {
     geoMapY.style = "width: 500px; height: 500px";
     geo.appendChild(geoMapY);
 
+    let geoMapCoord = document.createElement('div');
+    geoMapCoord.innerText = '';
+    geoMapCoord.className = 'widget-part';
+    geoMapCoord.id = 'geoMapCoordId';
+
+    geo.appendChild(geoMapCoord);
+
 
 
     //<div id="yandexmap" style="width: 500px; height: 500px"></div>

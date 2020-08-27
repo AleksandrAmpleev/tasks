@@ -14,6 +14,8 @@ function pageLoad() {
     weatherMain.appendChild(controlGeoLoad());
     weather.appendChild(weatherMain);   
 
+    
+    setInterval(GetCurrentDateTime, 1000);
     //pageEndLoad();    
 }
 

@@ -17,8 +17,6 @@ function controlbackgroundPictures() {
     if (curentPictureIndex >= pictures.length) {
         curentPictureIndex = 0;
     }
-   // weatherBody.background = pictures[curentPictureIndex];    
-
     getFoto(weatherBody.background);
 }
 
