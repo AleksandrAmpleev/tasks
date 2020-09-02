@@ -23,13 +23,23 @@ function controlGeoLoad() {
 
     let geoMapCoord = document.createElement('div');
     geoMapCoord.innerText = '';
-    geoMapCoord.className = 'widget-part';
+    geoMapCoord.className = 'widget-part-cord';
     geoMapCoord.id = 'geoMapCoordId';
 
+    let geoMapLat = document.createElement('div');
+    geoMapLat.innerText = '';
+    geoMapLat.className = 'widget-part-cord';
+    geoMapLat.id = 'geoMapLatId';
+
+    let geoMapLon = document.createElement('div');
+    geoMapLon.innerText = '';
+    geoMapLon.className = 'widget-part-cord';
+    geoMapLon.id = 'geoMapLonId';
+    geoMapCoord.appendChild(geoMapLat);
+    geoMapCoord.appendChild(geoMapLon);
+
     geo.appendChild(geoMapCoord);
-
-
-
+    
     //<div id="yandexmap" style="width: 500px; height: 500px"></div>
 
     //getGeoData();

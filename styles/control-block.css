@@ -7,11 +7,12 @@
     position: relative;
     border-radius: 50px;
     box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    border: 2px solid #22ff22;
 }
 
     .slideThree:after {
         content: 'F°';
-        color: #0060FF;
+        color: #0002FF;
         position: absolute;
         right: 10px;
         z-index: 0;

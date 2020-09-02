@@ -3,19 +3,28 @@
         ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-        ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        ['humidity', 'wind', 'feel', 'description'],
+        ['latityde', 'longityde'],
+        ['Today']
     ],
     ['ru', 'ru_RU',
         ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
         ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
         ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Ноя', 'Дек'],
-        ['Воск', 'Пон', 'Вт', 'Ср', 'Чет', 'Пят', 'Суб']
+        ['Воск', 'Пон', 'Вт', 'Ср', 'Чет', 'Пят', 'Суб'],
+        ['влажность', 'ветер', 'ощущения', 'описание'],
+        ['широта', 'долгота'],
+        ['Сегодня']
     ],
     ['be', 'be_BE',
         ['Нядзеля','Панядзелак', 'Аўторак', 'Серада', 'Чацвер', 'Пятніца', 'Субота'],
         ['студзень', 'лютага', 'сакавік', 'красавік', 'Май', 'Чэрвень', 'ліпеня', 'жнівень', 'верасень', 'кастрычніка', 'лістапада', 'снежні'],
         ['студз', 'люта', 'сакав', 'крас', 'Май', 'Чэрв', 'ліп', 'жні', 'вер', 'каст', 'ліст', 'снеж'],
-        ['Няд','Пан', 'Аўт', 'Сер', 'Чац', 'Пят', 'Суб']
+        ['Няд', 'Пан', 'Аўт', 'Сер', 'Чац', 'Пят', 'Суб'],
+        ['вільготнасць', 'вецер', 'адчуванні', 'апісанне'],
+        ['шырата', 'даўгата'],
+        ['Cёння']
     ]
     ];
 
@@ -25,16 +34,25 @@ let currentLang = languages[0];
 function refreshClick(e) {
     controlbackgroundPictures();
     getGeoData();
+
+}
+
+function searchClick(e) {
+    getGeoData();
 }
 
 function termoClick(e) {
     termoFarengeit = !termoFarengeit;
+    pushState();
     getGeoData();
 }
 
 function changeLanguageClick(e) {
-    currentLang = languages[e.target.selectedIndex];
-    getGeoData();
+    if (currentLang[0] !== languages[e.target.selectedIndex][0]) {
+        currentLang = languages[e.target.selectedIndex];
+        pushState();
+        getGeoData();
+    }    
 }
 
 function controlBlockLoad() {
@@ -50,19 +68,27 @@ function controlBlockLoad() {
     blockGroupButton.className = 'widget-part';
     blockGroupButton.id = 'blockGroupButtonId';
 
-    let refresh = document.createElement('input');
-    refresh.className = 'refresh';
+    //let refresh = document.createElement('input');
+    //refresh.className = 'button-weather refresh';
+    //refresh.id = 'refreshId';
+    //refresh.type = 'button';
+    //refresh.value = 'refresh';
+    //refresh.style.backgroundImage = './pictures/refresh_icon.svg';
+     
+    let refresh = document.createElement('img');
+    refresh.className = 'button-weather refresh';
     refresh.id = 'refreshId';
     refresh.type = 'button';
-    refresh.value = 'refresh';
+    refresh.src = './pictures/refresh_icon.svg';
+    //refresh.style.backgroundImage = '../pictures/refresh_icon.svg';
     refresh.addEventListener('click', refreshClick);
     
-    let language = document.createElement('input');
-    language.className = 'language';
-    language.id = 'languageId';
+    //let language = document.createElement('input');
+    //language.className = 'language';
+    //language.id = 'languageId';
 
     let languageSel = document.createElement('select');
-    languageSel.className = 'languageSel';
+    languageSel.className = 'button-weather';
     languageSel.id = 'languageSelId';
     languageSel.addEventListener('click', changeLanguageClick);
 
@@ -92,15 +118,25 @@ function controlBlockLoad() {
     gradsWrapperControlBlock.appendChild(gradsInputControlBlock);
     gradsWrapperControlBlock.appendChild(gradsLabelControlBlock);
 
+
     let search = document.createElement('input');
-    search.className = 'search';
+    search.className = 'input-weather';
     search.id = 'searchId';
+    search.value = 'search';
+
+    let searchBtn = document.createElement('input');
+    searchBtn.className = 'button-weather';
+    searchBtn.id = 'searchBtnId';
+    searchBtn.type = 'button';
+    searchBtn.value = 'SEARCH';
+    searchBtn.addEventListener('click', searchClick);
 
     blockGroupButton.appendChild(refresh);
-    blockGroupButton.appendChild(language);
+    //blockGroupButton.appendChild(language);
     blockGroupButton.appendChild(languageSel);
     blockGroupButton.appendChild(gradsWrapperControlBlock);
     blockGroupButton.appendChild(search);
+    blockGroupButton.appendChild(searchBtn);
     block.appendChild(blockGroupButton);
 
     return block;

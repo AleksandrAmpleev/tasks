@@ -1,7 +1,6 @@
 ﻿
 function GetCurrentDateTime() {
     let now = new Date();
-    let year = now.getFullYear();
     let mnth = now.getMonth();
     
     let date = now.getDate();
@@ -13,7 +12,7 @@ function GetCurrentDateTime() {
     let dayOfWeek = now.getDay();
 
     let timePanel = document.querySelector('#timerId');
-    timePanel.innerText = currentLang[2][dayOfWeek-1] + ' ' + date + ' ' + currentLang[3][mnth] + ' ' + hr + ':' + mn + ':' + s;
+    timePanel.innerText = currentLang[8][0] + ': ' + currentLang[2][dayOfWeek] + ' ' + String(date).padStart(2, '0') + ' ' + currentLang[3][mnth] + ' ' + String(hr).padStart(2, '0') + ':' + String(mn).padStart(2, '0') + ':' + String(s).padStart(2, '0');
 }
 
 function controlWeatherTodayLoad() {
@@ -31,7 +30,7 @@ function controlWeatherTodayLoad() {
 
     let container = document.createElement('div');
     container.id = 'weatherTodayPanelId';
-    container.className = 'widget-part';
+    container.className = 'widget-part-dt';
 
     let locationPanel = document.createElement('div');
     locationPanel.id = 'locationPanelId';
@@ -41,18 +40,38 @@ function controlWeatherTodayLoad() {
     timer.id = 'timerId';
     timer.className = 'widget-part-weather-today';
     timer.innerText = '';
-  
-    let todayDataPanel = document.createElement('div');
+
+    //let todayDatah2 = document.createElement('h2');
+    //todayDatah2.innerText = 'todayDatah2';
+    //todayDatah2.id = 'todayDatah2Id';
+         
+    let todayDataPanel = document.createElement('span');
     todayDataPanel.innerText = '';
+    todayDataPanel.className = 'today-main-temperature';
     todayDataPanel.id = 'todayDataPanelId';
+   // todayDataPanel.appendChild(todayDatah2);
 
-    let todayDatah2 = document.createElement('h2');
-    todayDatah2.innerText = '';
-    todayDatah2.id = 'todayDatah2Id';
-    todayDataPanel.appendChild(todayDatah2);
-    //container.appendChild(locationPanel);
-    container.appendChild(todayDataPanel);
+    let imgs = document.createElement('img');
+    imgs.id = 'imgsId';
+    imgs.src = './pictures/weatherQuestions.png'; //'D:\src\fancy-weather\pictures';// 'http://openweathermap.org/img/wn/10d@2x.png';
+    imgs.className = 'imgsToday';
+    //http://openweathermap.org/img/wn/{}@2x.png
+  
+    let subContainer = document.createElement('div');
+    subContainer.id = 'subContainerId';
+    subContainer.className = 'widget-part-weather-today-sub-container';
 
+    subContainer.appendChild(imgs);
+    subContainer.appendChild(todayDataPanel);
+    container.appendChild(subContainer);
+
+
+    let testPanel = document.createElement('div');
+    testPanel.innerText = '';
+    testPanel.id = 'testPanelId';
+
+    container.appendChild(testPanel);
+    
     weatherToday.appendChild(timer);
     weatherToday.appendChild(locationPanel);
     weatherToday.appendChild(container);    
