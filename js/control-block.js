@@ -1,30 +1,33 @@
 ﻿const languages = [
-    ['en', 'en_EN',
+        ['en', 'en_EN',
         ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
         ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         ['humidity', 'wind', 'feel', 'description'],
         ['latityde', 'longityde'],
-        ['Today']
+        ['Today'],
+        ['Morning', 'Noon', 'Night']
     ],
-    ['ru', 'ru_RU',
+        ['ru', 'ru_RU',
         ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
         ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
         ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Ноя', 'Дек'],
         ['Воск', 'Пон', 'Вт', 'Ср', 'Чет', 'Пят', 'Суб'],
         ['влажность', 'ветер', 'ощущения', 'описание'],
         ['широта', 'долгота'],
-        ['Сегодня']
+        ['Сегодня'],
+        ['Утро','Полдень','Вечер']
     ],
-    ['be', 'be_BE',
+        ['be', 'be_BE',
         ['Нядзеля','Панядзелак', 'Аўторак', 'Серада', 'Чацвер', 'Пятніца', 'Субота'],
         ['студзень', 'лютага', 'сакавік', 'красавік', 'Май', 'Чэрвень', 'ліпеня', 'жнівень', 'верасень', 'кастрычніка', 'лістапада', 'снежні'],
         ['студз', 'люта', 'сакав', 'крас', 'Май', 'Чэрв', 'ліп', 'жні', 'вер', 'каст', 'ліст', 'снеж'],
         ['Няд', 'Пан', 'Аўт', 'Сер', 'Чац', 'Пят', 'Суб'],
         ['вільготнасць', 'вецер', 'адчуванні', 'апісанне'],
         ['шырата', 'даўгата'],
-        ['Cёння']
+        ['Cёння'],
+        ['Раніца', 'Апоўдні', 'Вечар']
     ]
     ];
 
@@ -65,30 +68,20 @@ function controlBlockLoad() {
     block.appendChild(blockHeader);
 
     let blockGroupButton = document.createElement('div');
-    blockGroupButton.className = 'widget-part';
+    blockGroupButton.className = 'widget-part-group';
     blockGroupButton.id = 'blockGroupButtonId';
 
-    //let refresh = document.createElement('input');
-    //refresh.className = 'button-weather refresh';
-    //refresh.id = 'refreshId';
-    //refresh.type = 'button';
-    //refresh.value = 'refresh';
-    //refresh.style.backgroundImage = './pictures/refresh_icon.svg';
      
     let refresh = document.createElement('img');
     refresh.className = 'button-weather refresh';
     refresh.id = 'refreshId';
     refresh.type = 'button';
     refresh.src = './pictures/refresh_icon.svg';
-    //refresh.style.backgroundImage = '../pictures/refresh_icon.svg';
     refresh.addEventListener('click', refreshClick);
-    
-    //let language = document.createElement('input');
-    //language.className = 'language';
-    //language.id = 'languageId';
+
 
     let languageSel = document.createElement('select');
-    languageSel.className = 'button-weather';
+    languageSel.className = 'select-weather';
     languageSel.id = 'languageSelId';
     languageSel.addEventListener('click', changeLanguageClick);
 
@@ -131,13 +124,32 @@ function controlBlockLoad() {
     searchBtn.value = 'SEARCH';
     searchBtn.addEventListener('click', searchClick);
 
-    blockGroupButton.appendChild(refresh);
-    //blockGroupButton.appendChild(language);
-    blockGroupButton.appendChild(languageSel);
-    blockGroupButton.appendChild(gradsWrapperControlBlock);
-    blockGroupButton.appendChild(search);
-    blockGroupButton.appendChild(searchBtn);
+    let grLeft = document.createElement('div');
+    grLeft.className = 'grRoup';
+    grLeft.appendChild(refresh);
+    grLeft.appendChild(languageSel);
+    grLeft.appendChild(gradsWrapperControlBlock);
+
+    let grRight = document.createElement('div');
+    grRight.className = 'grRoup';
+    grRight.appendChild(search);
+    grRight.appendChild(searchBtn);
+
+
+    //blockGroupButton.appendChild(refresh);
+    //blockGroupButton.appendChild(languageSel);
+    //blockGroupButton.appendChild(gradsWrapperControlBlock);
+    //blockGroupButton.appendChild(search);
+    //blockGroupButton.appendChild(searchBtn);
+    blockGroupButton.appendChild(grLeft);
+    blockGroupButton.appendChild(grRight);
     block.appendChild(blockGroupButton);
+
+    let locationPanel = document.createElement('div');
+    locationPanel.id = 'locationPanelId';
+    locationPanel.className = 'widget-part-location';
+
+    block.appendChild(locationPanel);
 
     return block;
 }

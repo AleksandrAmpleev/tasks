@@ -8,8 +8,16 @@ function pageLoad() {
     controlbackgroundPictures();
     let weatherMain = document.createElement('div');
     weatherMain.className = 'widget';
-    weatherMain.appendChild(controlBlockLoad());
-    weatherMain.appendChild(controlWeatherTodayLoad());
+    weatherMain.id = 'weatherMainId';
+
+    let subWeatherMain = document.createElement('div');
+    subWeatherMain.className = 'widgetSubWeatherMain';
+    subWeatherMain.appendChild(controlBlockLoad());
+    subWeatherMain.appendChild(controlWeatherTodayLoad());
+
+    weatherMain.appendChild(subWeatherMain);
+    //weatherMain.appendChild(controlBlockLoad());
+    //weatherMain.appendChild(controlWeatherTodayLoad());
     weatherMain.appendChild(controlWeather3DaysLoad());
     weatherMain.appendChild(controlGeoLoad());
     weather.appendChild(weatherMain);   

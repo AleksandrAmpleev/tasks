@@ -16,7 +16,8 @@ function controlWeather3DaysLoad() {
     weather3DaysPanel.id = 'weather3DaysPanelId';
     
 
-    let weather3daysSubHeaderh3Id = document.createElement('h3');
+    let weather3daysSubHeaderh3Id = document.createElement('div');
+    weather3daysSubHeaderh3Id.className = 'ph3';
     
 
     let firstDayPanelTitle = document.createElement('div');
@@ -24,7 +25,7 @@ function controlWeather3DaysLoad() {
     firstDayPanelTitle.className = 'fancy-days-title';
     firstDayPanelTitle.id = 'DayPanelTitleId1';
 
-    let firstDayPanel = document.createElement('div');
+    let firstDayPanel = document.createElement('span');
     firstDayPanel.innerText = '';
     firstDayPanel.className = 'fancy-days';
     firstDayPanel.id = 'DayPanelId1';
@@ -34,7 +35,7 @@ function controlWeather3DaysLoad() {
     secondDayPanelTitle.className = 'fancy-days-title';
     secondDayPanelTitle.id = 'DayPanelTitleId2';
 
-    let secondDayPanel = document.createElement('div');
+    let secondDayPanel = document.createElement('span');
     secondDayPanel.innerText = '';
     secondDayPanel.className = 'fancy-days';
     secondDayPanel.id = 'DayPanelId2';
@@ -44,7 +45,7 @@ function controlWeather3DaysLoad() {
     threeDayPanelTitle.className = 'fancy-days-title';
     threeDayPanelTitle.id = 'DayPanelTitleId3';
 
-    let threeDayPanel = document.createElement('div');
+    let threeDayPanel = document.createElement('span');
     threeDayPanel.innerText = '';
     threeDayPanel.className = 'fancy-days';
     threeDayPanel.id = 'DayPanelId3';
@@ -57,6 +58,12 @@ function controlWeather3DaysLoad() {
     weather3daysSubHeaderh3Id.appendChild(threeDayPanel);
 
     weather3DaysPanel.appendChild(weather3daysSubHeaderh3Id);
+    //weather3DaysPanel.appendChild(firstDayPanelTitle);
+    //weather3DaysPanel.appendChild(firstDayPanel);
+    //weather3DaysPanel.appendChild(secondDayPanelTitle);
+    //weather3DaysPanel.appendChild(secondDayPanel);
+    //weather3DaysPanel.appendChild(threeDayPanelTitle);
+    //weather3DaysPanel.appendChild(threeDayPanel);
     weather3Days.appendChild(weather3DaysPanel);       
 
     return weather3Days;

@@ -7,7 +7,29 @@ h2 {
     border-style: solid;
     border-color: fuchsia;
     border-width: 2px;
-    display:none;
+    display: none;
+}
+
+h3 {
+    text-align: justify;
+    flex-direction: column;
+}
+
+.ph3 {
+    /*display: flex;
+    justify-content: space-around;*/
+    display: flex;
+    flex-direction: column;
+    min-width: 700px;
+}
+
+.localRecorDay {
+    /*flex-direction: row-reverse;*/
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #22ff22;
+    border-radius: 8px;
+    margin: 2px 2px;
 }
 
 .language {
@@ -27,13 +49,19 @@ h2 {
 .widget {
     display: flex;
     /*justify-content: space-between;*/
-    justify-content: flex-start;
+    /*justify-content: flex-start;*/
+    justify-content: space-around;
     flex-wrap: wrap;
     margin: 5px;
     padding: 20px;
     border-radius: 7px;
     background-color: rgba(0,0,0,.2);
-    color: #ffffff; 
+    color: #ffffff;
+}
+
+.widgetSubWeatherMain {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .widget-part-weather-today {
@@ -49,6 +77,25 @@ h2 {
     min-width: 700px;
 }
 
+.widget-part-group {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.3);
+    color: #ffffff;
+    min-height: 70px;
+    min-width: 700px;
+    /*max-width: 700px;*/
+}
+
+.grRoup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .widget-part {
     display: flex;
     justify-content: space-between;
@@ -60,7 +107,6 @@ h2 {
     min-height: 70px;
     min-width: 700px;
     max-width: 700px;
-
     /*flex: 1 1;
     flex-grow: 1;
     flex-shrink: 1;
@@ -130,9 +176,9 @@ h2 {
 .fancy-days {
     display: flex;
     /*justify-content: space-between;*/
-    flex-direction: column;
+    /*flex-direction: column;*/
     margin: 5px;
-    padding: 20px, 20px, 2kongruent%800px, 20px;
+    /*padding: 20px, 20px, 20px, 20px;*/
     border-radius: 5px;
     background-color: rgba(0,0,0,.3);
     color: #ffffff;
@@ -144,7 +190,8 @@ h2 {
     display: flex;
     flex-direction: column;
     margin: 5px;
-    padding: 20px, 20px, 20px, 20px ;
+    /*padding: 20px, 20px, 20px, 20px ;*/
+    justify-content: center;
     border-radius: 5px;
     background-color: rgba(0,0,0,.3);
     color: #00ffff;
@@ -162,8 +209,8 @@ h2 {
     text-decoration: none;
     outline: none;
     display: inline-block;
-    padding: 10px 30px;
-    margin: 10px 20px;
+    padding: 5px 10px 5px 50px;
+    margin: 10px 10px;
     position: relative;
     overflow: hidden;
     border: 2px solid #22ff22;
@@ -175,7 +222,6 @@ h2 {
 }
 
 option {
-   
     border: 2px solid #22ff22;
     border-radius: 8px;
     font-family: 'Montserrat', sans-serif;
@@ -184,12 +230,50 @@ option {
     background: rgba(255,255,255,.1)
 }
 
+.select-weather {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    padding: 5px 5px;
+    margin: 10px 10px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #22ff22;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    transition: .2s ease-in-out;
+    background: rgba(2,255,2,.1);
+    height: 30px;
+}
+
+    .select-weather:before {
+        content: "";
+        background: linear-gradient(90deg, rgba(255,255,255,.1), rgba(255,255,255,.5));
+        height: 50px;
+        width: 50px;
+        position: absolute;
+        top: -8px;
+        left: -75px;
+        transform: skewX(-45deg);
+    }
+
+    .select-weather:hover {
+        background: #229922;
+        color: #aaaaaa;
+    }
+
+        .select-weather:hover:before {
+            left: 150px;
+            transition: 1.5s ease-in-out;
+        }
+
 .button-weather {
     text-decoration: none;
     outline: none;
     display: inline-block;
-    padding: 10px 30px;
-    margin: 10px 20px;
+    padding: 5px 5px;
+    margin: 10px 10px;
     position: relative;
     overflow: hidden;
     border: 2px solid #22ff22;
@@ -215,6 +299,7 @@ option {
         background: #229922;
         color: #aaaaaa;
     }
+
         .button-weather:hover:before {
             left: 150px;
             transition: 1.5s ease-in-out;
@@ -229,8 +314,8 @@ option {
 .imgs3Day {
     /*display: flex;
     align-items: center;*/
-    height: 27px;
-    width: 27px;
+    height: 35px;
+    width: 35px;
 }
 
 .widget-part-weather-today-sub-container {
@@ -239,9 +324,88 @@ option {
 }
 
 .refresh {
-    width: 35px;
+    width: 40px;
     height: 35px;
- 
     /*background-image: url('./pictures/refresh_icon.svg'); image-url('../pictures/refresh_icon.svg');*/
     /*content: 'Refresh';*/
+}
+
+
+.partOfDay {
+}
+
+
+
+
+
+
+
+.tooltip {
+    position: relative;
+    /*background: #ff3466;*/
+    padding: 5px 12px;
+    margin: 5px;
+    font-size: 15px;
+    /*border-radius: 100%;*/
+    color: #FFF;
+}
+
+    .tooltip:before,
+    .tooltip:after {
+        position: absolute;
+        content: '';
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+
+    .tooltip:before {
+        border-width: 10px 8px 0 8px;
+        border-style: solid;
+        border-color: #ff3466 transparent transparent transparent;
+        top: -15px;
+        transform: translateY(20px);
+    }
+
+    .tooltip:after {
+        content: attr(data-tooltip);
+        background: #ff3466;
+        width: 200px;
+        height: 40px;
+        font-size: 13px;
+        font-weight: 300;
+        top: -75px;
+        left: -10px;
+        padding: 10px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transform: translateY(20px);
+    }
+
+    .tooltip:hover::before,
+    .tooltip:hover::after {
+        opacity: 1;
+        transform: translateY(-2px);
+        /*border-color: #ff0000;*/
+    }
+
+@keyframes shake {
+    0% {
+        transform: rotate(2deg);
+    }
+
+    50% {
+        transform: rotate(-3deg);
+    }
+
+    70% {
+        transform: rotate(3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+#anim:hover {
+    animation: shake 500ms ease-in-out forwards;
 }

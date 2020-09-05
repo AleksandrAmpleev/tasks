@@ -32,9 +32,9 @@ function controlWeatherTodayLoad() {
     container.id = 'weatherTodayPanelId';
     container.className = 'widget-part-dt';
 
-    let locationPanel = document.createElement('div');
-    locationPanel.id = 'locationPanelId';
-    locationPanel.className = 'widget-part-location';
+    //////////////////let locationPanel = document.createElement('div');
+    //////////////////locationPanel.id = 'locationPanelId';
+    //////////////////locationPanel.className = 'widget-part-location';
 
     let timer = document.createElement('div');
     timer.id = 'timerId';
@@ -73,7 +73,11 @@ function controlWeatherTodayLoad() {
     container.appendChild(testPanel);
     
     weatherToday.appendChild(timer);
-    weatherToday.appendChild(locationPanel);
+
+
+
+
+    //weatherToday.appendChild(locationPanel);
     weatherToday.appendChild(container);    
 
     return weatherToday;
