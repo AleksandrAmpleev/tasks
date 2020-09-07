@@ -18,6 +18,7 @@ function controlGeoLoad() {
     search.value = '';
     search.type = "search";
     search.placeholder = 'type for find sity';
+    search.addEventListener('keydown', keyDownSearhInput);
 
     let searchBtn = document.createElement('input');
     searchBtn.className = 'button-weather';

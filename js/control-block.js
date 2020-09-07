@@ -43,6 +43,12 @@ function refreshClick(e) {
 
 }
 
+function keyDownSearhInput(e) {
+    if (e.keyCode === 13) {
+        searchClick(e);
+    }
+}
+
 function searchClick(e) {
     let findControll = document.querySelector('#searchId');
     let findString = findControll.value;
