@@ -20,7 +20,7 @@ function controlWeather3DaysLoad() {
     weather3daysSubHeaderh3Id.className = 'ph3';
     
 
-    let firstDayPanelTitle = document.createElement('div');
+    let firstDayPanelTitle = document.createElement('span');
     firstDayPanelTitle.innerText = 'DayPanelTitleId1';
     firstDayPanelTitle.className = 'fancy-days-title';
     firstDayPanelTitle.id = 'DayPanelTitleId1';
@@ -30,7 +30,7 @@ function controlWeather3DaysLoad() {
     firstDayPanel.className = 'fancy-days';
     firstDayPanel.id = 'DayPanelId1';
 
-    let secondDayPanelTitle = document.createElement('div');
+    let secondDayPanelTitle = document.createElement('span');
     secondDayPanelTitle.innerText = 'DayPanelTitleId2';
     secondDayPanelTitle.className = 'fancy-days-title';
     secondDayPanelTitle.id = 'DayPanelTitleId2';
@@ -40,7 +40,7 @@ function controlWeather3DaysLoad() {
     secondDayPanel.className = 'fancy-days';
     secondDayPanel.id = 'DayPanelId2';
 
-    let threeDayPanelTitle = document.createElement('div');
+    let threeDayPanelTitle = document.createElement('span');
     threeDayPanelTitle.innerText = 'DayPanelTitleId3';
     threeDayPanelTitle.className = 'fancy-days-title';
     threeDayPanelTitle.id = 'DayPanelTitleId3';

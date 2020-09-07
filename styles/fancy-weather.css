@@ -19,7 +19,8 @@ h3 {
     /*display: flex;
     justify-content: space-around;*/
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
+    justify-content: space-around;
     min-width: 700px;
 }
 
@@ -27,11 +28,11 @@ h3 {
     /*flex-direction: row-reverse;*/
     display: flex;
     flex-direction: column;
-    border: 2px solid rgba(255,255,255,.5);
+    /*border: 2px solid rgba(255,255,255,.5);*/
     border-radius: 8px;
     margin: 2px 2px;
     min-width:100px;
-    max-width:120px;
+    max-width:170px;
 }
 
 .language {
@@ -177,8 +178,8 @@ h3 {
 
 .fancy-days {
     display: flex;
-    /*justify-content: space-between;*/
-    /*flex-direction: column;*/
+    justify-content: space-between;
+    flex-direction: column;
     margin: 5px;
     /*padding: 20px, 20px, 20px, 20px;*/
     border-radius: 5px;
@@ -194,10 +195,11 @@ h3 {
     margin: 5px;
     /*padding: 20px, 20px, 20px, 20px ;*/
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: rgba(0,0,0,.3);
-    color: #00ffff;
+    /*color: #00ffff;*/
     min-height: 12px;
+    border: 2px solid rgba(255,255,255,.5);
 }
 
 #map {
@@ -337,6 +339,9 @@ option {
 
 
 .partOfDay {
+    color: white;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 5px;
 }
 
 

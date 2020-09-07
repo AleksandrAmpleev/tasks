@@ -131,10 +131,13 @@ function exctractWeatherData(o) {
     }
 
     let indexDay = currentTimeObj.dt;
+    let targetControll;
     let ind = 0;
     data.forEach(function (item, i, arr) {
         let dayTag = document.querySelector('#DayPanelId' + ind);
         let dayImg = document.querySelector('#DayPanelimgsId' + ind);
+
+        
 
         if (indexDay !== item.dt) {
             ind++;
@@ -145,6 +148,7 @@ function exctractWeatherData(o) {
                 title.innerText = currentLang[2][item.time.getDay()] + ' ' +
                     String(item.time.getDate()).padStart(2, '0') + ' ' +
                     currentLang[3][item.time.getMonth()];
+                targetControll = title;
             }
 
         } else {
@@ -188,7 +192,11 @@ function exctractWeatherData(o) {
                 localRecordDay.appendChild(subLocalRecordDayImg);
                 localRecordDay.appendChild(subLocalRecordDay);
                 localRecordDay.appendChild(subLocalRecordDayDepails);
-                dayTag.appendChild(localRecordDay);
+                //dayTag.appendChild(localRecordDay);
+                if (targetControll) {
+                    targetControll.appendChild(localRecordDay);
+                }
+                
             }
         }
     });
