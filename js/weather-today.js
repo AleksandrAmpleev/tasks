@@ -22,63 +22,24 @@ function controlWeatherTodayLoad() {
     weatherToday.className = '';
     weatherToday.id = 'weatherTodayId';
         
-    let weatherTodayHeader = document.createElement('h2');
-    weatherTodayHeader.innerText = '2. Weather today';
-    weatherTodayHeader.id = 'weatherTodayId';
+    //let weatherTodayHeader = document.createElement('h2');
+    //weatherTodayHeader.innerText = '2. Weather today';
+    //weatherTodayHeader.id = 'weatherTodayId';
           
-    weatherToday.appendChild(weatherTodayHeader);
+    //weatherToday.appendChild(weatherTodayHeader);
 
-    let container = document.createElement('div');
-    container.id = 'weatherTodayPanelId';
-    container.className = 'widget-part-dt';
+
 
     //////////////////let locationPanel = document.createElement('div');
     //////////////////locationPanel.id = 'locationPanelId';
     //////////////////locationPanel.className = 'widget-part-location';
 
-    let timer = document.createElement('div');
-    timer.id = 'timerId';
-    timer.className = 'widget-part-weather-today';
-    timer.innerText = '';
 
-    //let todayDatah2 = document.createElement('h2');
-    //todayDatah2.innerText = 'todayDatah2';
-    //todayDatah2.id = 'todayDatah2Id';
-         
-    let todayDataPanel = document.createElement('span');
-    todayDataPanel.innerText = '';
-    todayDataPanel.className = 'today-main-temperature';
-    todayDataPanel.id = 'todayDataPanelId';
-   // todayDataPanel.appendChild(todayDatah2);
 
-    let imgs = document.createElement('img');
-    imgs.id = 'imgsId';
-    imgs.src = './pictures/weatherQuestions.png'; //'D:\src\fancy-weather\pictures';// 'http://openweathermap.org/img/wn/10d@2x.png';
-    imgs.className = 'imgsToday';
-    //http://openweathermap.org/img/wn/{}@2x.png
+
+
+
   
-    let subContainer = document.createElement('div');
-    subContainer.id = 'subContainerId';
-    subContainer.className = 'widget-part-weather-today-sub-container';
-
-    subContainer.appendChild(imgs);
-    subContainer.appendChild(todayDataPanel);
-    container.appendChild(subContainer);
-
-
-    let testPanel = document.createElement('div');
-    testPanel.innerText = '';
-    testPanel.id = 'testPanelId';
-
-    container.appendChild(testPanel);
-    
-    weatherToday.appendChild(timer);
-
-
-
-
-    //weatherToday.appendChild(locationPanel);
-    weatherToday.appendChild(container);    
 
     return weatherToday;
 }

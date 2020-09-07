@@ -6,9 +6,9 @@ function controlWeather3DaysLoad() {
     weather3Days.id = 'weather3dId';
     //weather3Days.className = ' widget';
 
-    let weather3DaysHeader = document.createElement('h2');
-    weather3DaysHeader.innerText = '3. Weather tree days';
-    weather3Days.appendChild(weather3DaysHeader);
+    //let weather3DaysHeader = document.createElement('h2');
+    //weather3DaysHeader.innerText = '3. Weather tree days';
+    //weather3Days.appendChild(weather3DaysHeader);
 
 
     let weather3DaysPanel = document.createElement('div');
@@ -64,6 +64,14 @@ function controlWeather3DaysLoad() {
     //weather3DaysPanel.appendChild(secondDayPanel);
     //weather3DaysPanel.appendChild(threeDayPanelTitle);
     //weather3DaysPanel.appendChild(threeDayPanel);
+
+
+
+
+
+
+
+
     weather3Days.appendChild(weather3DaysPanel);       
 
     return weather3Days;

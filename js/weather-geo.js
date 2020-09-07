@@ -4,11 +4,48 @@ function controlGeoLoad() {
     let geo = document.createElement('div');
     geo.className = '';
     geo.id = 'geoId';
+
+    let geoSearch = document.createElement('div');
+    geoSearch.className = '';
+    geoSearch.id = 'geoSearchId';
+
+
+
+
+    let search = document.createElement('input');
+    search.className = 'input-weather';
+    search.id = 'searchId';
+    search.value = '';
+    search.type = "search";
+    search.placeholder = 'type for find sity';
+
+    let searchBtn = document.createElement('input');
+    searchBtn.className = 'button-weather';
+    searchBtn.id = 'searchBtnId';
+    searchBtn.type = 'button';
+    searchBtn.value = 'SEARCH';
+    //searchBtn.src = './pictures/weatherQuestions.png';
+    searchBtn.addEventListener('click', searchClick);
+
+    //let grLeft = document.createElement('div');
+    //grLeft.className = 'grRoup';
+    //grLeft.appendChild(refresh);
+    //grLeft.appendChild(languageSel);
+    //grLeft.appendChild(gradsWrapperControlBlock);
+
+    let grRight = document.createElement('div');
+    grRight.className = 'widget-part-group';
+    grRight.appendChild(search);
+    grRight.appendChild(searchBtn);
+
+    geoSearch.appendChild(grRight);
+    geo.appendChild(geoSearch);
+
     //geo.className = ' widget';
 
-    let geoHeader = document.createElement('h2');
-    geoHeader.innerText = '4. Geo';
-    geo.appendChild(geoHeader);
+    //let geoHeader = document.createElement('h2');
+    //geoHeader.innerText = '4. Geo';
+    //geo.appendChild(geoHeader);
 
     let geoMap = document.createElement('div');
     geoMap.innerText = '';

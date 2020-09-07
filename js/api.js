@@ -181,7 +181,7 @@ function exctractWeatherData(o) {
 
                 let subLocalRecordDayDepails = document.createElement('span');
                 subLocalRecordDayDepails.innerText = currentLang[6][0] + ': ' + item.humidity + '%, ' +
-                    currentLang[6][3] + ': ' + item.description + ', ' + currentLang[6][1] + ': ' + item.wind;
+                   /* currentLang[6][3] + ': ' + */ item.description + ', ' + currentLang[6][1] + ': ' + item.wind;
 
                 subLocalRecordDayImg.src = item.icon;
                 localRecordDay.appendChild(partOfDay);
