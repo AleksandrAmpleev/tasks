@@ -8,7 +8,9 @@
         ['latityde', 'longityde'],
         ['Today'],
         ['Morning', 'Noon', 'Night'],
-        ['hum.', 'wind', 'feel', 'desc.']
+        ['hum.', 'wind', 'feel', 'desc.'],
+        ['Search'],
+        ['type for find city']
     ],
     ['ru', 'ru_RU',
         ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
@@ -18,8 +20,10 @@
         ['влажность', 'ветер', 'ощущения', 'описание'],
         ['широта', 'долгота'],
         ['Сегодня'],
-        ['Утро', 'Полдень', 'Вечер'],
-        ['вл.', 'ветер', 'ощ.', 'оп.']
+        ['Утро', 'День', 'Вечер'],
+        ['вл.', 'ветер', 'ощ.', 'оп.'],
+        ['Поиск'],
+        ['введите город']
     ],
     ['be', 'be_BE',
         ['Нядзеля', 'Панядзелак', 'Аўторак', 'Серада', 'Чацвер', 'Пятніца', 'Субота'],
@@ -30,7 +34,9 @@
         ['шырата', 'даўгата'],
         ['Cёння'],
         ['Раніца', 'Апоўдні', 'Вечар'],
-        ['віл', 'вецер', 'адч.', 'апі.']
+        ['віл', 'вецер', 'адч.', 'апі.'],
+        ['Пошук'],
+        ['Увядзіце горад']
     ]
 ];
 
@@ -39,6 +45,7 @@ let currentLang = languages[0];
 
 function refreshClick(e) {
     //controlbackgroundPictures();
+    getFoto();
     getGeoData();
 
 }
@@ -47,6 +54,9 @@ function keyDownSearhInput(e) {
     if (e.keyCode === 13) {
         searchClick(e);
     }
+}
+
+function weHaveError(e) {
 }
 
 function searchClick(e) {
@@ -71,10 +81,18 @@ function searchClick(e) {
                 exctractGeoData(param);
             }
         }
+        
     };
     xhrWeathr.open('GET', weathrEndpoint, true);
-
+    xhrWeathr.onerror = function(e) {
+        alert("Error fetching ");
+    };
+    
+    //try {
     xhrWeathr.send();
+    //} catch (e) {
+    //    alert("Error fetching!!! ");
+   // }
 }
 
 function termoClick(e) {

@@ -25,7 +25,7 @@ function controlGeoLoad() {
     searchBtn.id = 'searchBtnId';
     searchBtn.type = 'button';
     searchBtn.value = 'SEARCH';
-    //searchBtn.src = './pictures/weatherQuestions.png';
+
     searchBtn.addEventListener('click', searchClick);
 
     //let grLeft = document.createElement('div');
