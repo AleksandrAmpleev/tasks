@@ -44,10 +44,8 @@ let termoFarengeit = false;
 let currentLang = languages[0];
 
 function refreshClick(e) {
-    //controlbackgroundPictures();
     getFoto();
     getGeoData();
-
 }
 
 function keyDownSearhInput(e) {
@@ -88,11 +86,7 @@ function searchClick(e) {
         alert("Error fetching ");
     };
     
-    //try {
     xhrWeathr.send();
-    //} catch (e) {
-    //    alert("Error fetching!!! ");
-   // }
 }
 
 function termoClick(e) {
@@ -114,14 +108,9 @@ function controlBlockLoad() {
     block.className = '';
     block.id = 'blockId';
 
-    //let blockHeader = document.createElement('h2');
-    //blockHeader.innerText = '1. Block controll';
-    //block.appendChild(blockHeader);
-
     let blockGroupButton = document.createElement('div');
     blockGroupButton.className = 'widget-part-group';
     blockGroupButton.id = 'blockGroupButtonId';
-
 
     let refresh = document.createElement('img');
     refresh.className = 'button-weather refresh';
@@ -162,80 +151,39 @@ function controlBlockLoad() {
     gradsWrapperControlBlock.appendChild(gradsInputControlBlock);
     gradsWrapperControlBlock.appendChild(gradsLabelControlBlock);
 
-
-    //let search = document.createElement('input');
-    //search.className = 'input-weather';
-    //search.id = 'searchId';
-    //search.value = '';
-    //search.type = "search";
-    //search.placeholder = 'type for find sity';
-
-    //let searchBtn = document.createElement('input');
-    //searchBtn.className = 'button-weather';
-    //searchBtn.id = 'searchBtnId';
-    //searchBtn.type = 'button';
-    //searchBtn.value = 'SEARCH';
-    ////searchBtn.src = './pictures/weatherQuestions.png';
-    //searchBtn.addEventListener('click', searchClick);
-
     let grLeft = document.createElement('div');
     grLeft.className = 'grRoup';
     grLeft.appendChild(refresh);
     grLeft.appendChild(languageSel);
     grLeft.appendChild(gradsWrapperControlBlock);
 
-    //let grRight = document.createElement('div');
-    //grRight.className = 'grRoup';
-    //grRight.appendChild(search);
-    //grRight.appendChild(searchBtn);
-
-
     blockGroupButton.appendChild(refresh);
-    //blockGroupButton.appendChild(languageSel);
-    //blockGroupButton.appendChild(gradsWrapperControlBlock);
-    //blockGroupButton.appendChild(search);
-    //blockGroupButton.appendChild(searchBtn);
     blockGroupButton.appendChild(grLeft);
-    //blockGroupButton.appendChild(grRight);
     block.appendChild(blockGroupButton);
 
     let locationPanel = document.createElement('div');
     locationPanel.id = 'locationPanelId';
     locationPanel.className = 'widget-part-location';
-
-
-
-
-
+             
     let timer = document.createElement('div');
     timer.id = 'timerId';
     timer.className = 'widget-part-weather-today';
     timer.innerText = '';
-
-
-
-
-
-
+          
     let container = document.createElement('div');
     container.id = 'weatherTodayPanelId';
     container.className = 'widget-part-dt';
-    //let todayDatah2 = document.createElement('h2');
-    //todayDatah2.innerText = 'todayDatah2';
-    //todayDatah2.id = 'todayDatah2Id';
 
     let todayDataPanel = document.createElement('span');
     todayDataPanel.innerText = '';
     todayDataPanel.className = 'today-main-temperature';
     todayDataPanel.id = 'todayDataPanelId';
-    // todayDataPanel.appendChild(todayDatah2);
 
     let imgs = document.createElement('img');
     imgs.id = 'imgsId';
-    imgs.src = './pictures/weatherQuestions.png'; //'D:\src\fancy-weather\pictures';// 'http://openweathermap.org/img/wn/10d@2x.png';
+    imgs.src = './pictures/weatherQuestions.png';// 'http://openweathermap.org/img/wn/10d@2x.png';
     imgs.className = 'imgsToday';
-    //http://openweathermap.org/img/wn/{}@2x.png
-
+    
     let subContainer = document.createElement('div');
     subContainer.id = 'subContainerId';
     subContainer.className = 'widget-part-weather-today-sub-container';
@@ -245,45 +193,16 @@ function controlBlockLoad() {
     subContainer.appendChild(imgs);
     subContainer.appendChild(todayDataPanel);
 
-
-
-
-    // container.appendChild(timer);
-
-
     container.appendChild(subContainer);
-
-
+    
     let testPanel = document.createElement('div');
     testPanel.innerText = '';
     testPanel.id = 'testPanelId';
 
-
-
-
-
-
     container.appendChild(testPanel);
-
-
-
-
 
     block.appendChild(locationPanel);
     block.appendChild(container);
-    //block.appendChild(timer);
-
-
-
-
-
-
-
-
-
-
-
-
 
     return block;
 }

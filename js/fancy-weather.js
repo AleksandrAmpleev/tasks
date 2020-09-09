@@ -4,6 +4,34 @@ const weatherBody = document.querySelector('#weatherBodyId');
 
 let curentPictureIndex = -1;
 
+
+function GetCurrentDateTime() {
+    let now = new Date();
+    let mnth = now.getMonth();
+
+    let date = now.getDate();
+
+    let hr = now.getHours();
+    let mn = now.getMinutes();
+    let s = now.getSeconds();
+
+    let dayOfWeek = now.getDay();
+
+    let timePanel = document.querySelector('#timerId');
+    timePanel.innerText = currentLang[8][0] + ': ' + currentLang[2][dayOfWeek] + ' ' + String(date).padStart(2, '0') + ' ' + currentLang[3][mnth] + ' ' + String(hr).padStart(2, '0') + ':' + String(mn).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+
+function controlWeatherTodayLoad() {
+    getGeoData();
+
+    let weatherToday = document.createElement('div');
+    weatherToday.className = '';
+    weatherToday.id = 'weatherTodayId';
+    return weatherToday;
+}
+
+
+
 function pageLoad() {
     getFoto(weatherBody.background);
     let weatherMain = document.createElement('div');
@@ -14,22 +42,17 @@ function pageLoad() {
     subWeatherMain.className = 'widgetSubWeatherMain';
     subWeatherMain.appendChild(controlBlockLoad());
     subWeatherMain.appendChild(controlWeatherTodayLoad());
+ 
 
     weatherMain.appendChild(subWeatherMain);
-    //weatherMain.appendChild(controlBlockLoad());
-    //weatherMain.appendChild(controlWeatherTodayLoad());
     weatherMain.appendChild(controlWeather3DaysLoad());
     weatherMain.appendChild(controlGeoLoad());
     weather.appendChild(weatherMain);   
-
-    
+        
     setInterval(GetCurrentDateTime, 1000);
 }
 
 function pageEndLoad() {
-    //let spinner = document.querySelector('#loaderId');
-    //spinner.style.display = 'none';
-    //controlbackgroundPictures();
 }
 
 window.onload = pageLoad;
@@ -52,4 +75,3 @@ window.onload = pageLoad;
 //средняя температура
 //иконка погоды
 //4. Геолокационные данные
-
