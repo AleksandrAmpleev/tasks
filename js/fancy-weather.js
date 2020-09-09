@@ -5,7 +5,7 @@ const weatherBody = document.querySelector('#weatherBodyId');
 let curentPictureIndex = -1;
 
 function pageLoad() {
-    controlbackgroundPictures();
+    getFoto(weatherBody.background);
     let weatherMain = document.createElement('div');
     weatherMain.className = 'widget';
     weatherMain.id = 'weatherMainId';
@@ -24,21 +24,6 @@ function pageLoad() {
 
     
     setInterval(GetCurrentDateTime, 1000);
-    //pageEndLoad();    
-
-
-
-//var arr = [
-//    { "name": "Вася", "age": 20 },
-//    { "name": "Петя", "age": 22 },
-//    { "name": "Таня", "age": 18 }
-//];
-//Сохранение делается так
-
-//localStorage.setItem("myKey", JSON.stringify(arr));
-//Извлечение
-
-//var arr = JSON.parse(localStorage.getItem("myKey"));
 }
 
 function pageEndLoad() {

@@ -44,25 +44,14 @@ function exctractGeoData(o) {
     let latGrad = Math.floor(latityde);
     let latMin = (((latityde - latGrad)) * 60);
     let latSec = latMin * 60;
-
-
-    // let t = convertDMS(latityde, longityde);
     let lat = document.querySelector('#geoMapLatId');
 
     lat.innerText = currentLang[7][0] + ': ';
-    // + convertDMS(o.lat, true) / / latityde;
-    //let grLat = document.createElement('span');
-    //grLat.className = 'grad';
-    //grLat.innerText = convertDMS(o.lat, true);
-    //lat.appendChild(grLat);
     lat.appendChild(convertDMS(o.lat, true));
 
     let lon = document.querySelector('#geoMapLonId');
-    //lon.innerText = currentLang[7][1] + ': ' + convertDMS(o.lon, false); //longityde;
     lon.innerText = currentLang[7][1] + ': ';
     lon.appendChild(convertDMS(o.lon, false));
-
-    //popState();
     getWeather();
     getMap(o.lat, o.lon);
 }
@@ -90,10 +79,10 @@ function toDegreesMinutesAndSeconds(coordinate) {
     dms.appendChild(deg);
     dms.appendChild(mint);
     dms.appendChild(scd);
-    return dms; //degrees + "° " + minutes + "' " + seconds + '"';
+    return dms;
 }
 
-function convertDMS(/*lat, lng*/ entity, isLatityde) {
+function convertDMS(entity, isLatityde) {
     let convertedValue = toDegreesMinutesAndSeconds(entity);
 
     let latitudeCardinal = '';
@@ -111,11 +100,7 @@ function convertDMS(/*lat, lng*/ entity, isLatityde) {
     latCardinal.innerText = " " + latitudeCardinal;
     dms.appendChild(latCardinal);
 
-    return dms; //convertedValue + " " + latitudeCardinal;
-
-    //var longitude = toDegreesMinutesAndSeconds(lng);
-    //var longitudeCardinal = lng >= 0 ? "E" : "W";
-    //return latitude + " " + latitudeCardinal + "\n" + longitude + " " + longitudeCardinal;
+    return dms; 
 }
 
 function exctractWeatherData(o) {
@@ -127,8 +112,6 @@ function exctractWeatherData(o) {
 
     o.list.forEach(function (item, i, arr) {
         let d = new Date(item.dt_txt);
-
-        //if (hours.indexOf(d.getHours()) !== -1) {
 
         let year = d.getFullYear();
         let mnth = d.getMonth();
@@ -153,37 +136,26 @@ function exctractWeatherData(o) {
         }
 
         data.push(t);
-        //  }
-
     });
 
-    let todayDataPanel = document.querySelector('#todayDataPanelId');//'#testPanelId');
-    let todayDatah2Id = document.querySelector('#testPanelId'); //'#weatherTodayPanelId');
+    let todayDataPanel = document.querySelector('#todayDataPanelId');
+    let todayDatah2Id = document.querySelector('#testPanelId'); 
 
 
     let todayImg = document.querySelector('#imgsId');
     todayImg.src = currentTimeObj.icon;
 
-   // todayDataPanel.classList.add('grad');
-
-    //todayDatah2Id
-
     let discrPanel = document.createElement('span');
     let discrPanel1 = document.createElement('span');
     let discrPanel2 = document.createElement('span');
     let discrPanel3 = document.createElement('span');
-
-
+    
     if (termoFarengeit) {
         todayDataPanel.innerText = String((currentTimeObj.temp + 49)).padStart(4, '0') + ' F';
         discrPanel1.innerText = currentLang[6][0] + ': ' + currentTimeObj.humidity + '% ';
         discrPanel2.classList.add('grad');
         discrPanel2.innerText = currentLang[6][2] + ': ' + (currentTimeObj.feels_like + 49).toFixed(0) + 'F';
         discrPanel3.innerText = currentLang[6][3] + ': ' + currentTimeObj.description + ' ' + currentLang[6][1] + ': ' + currentTimeObj.wind;
-
-        //todayDatah2Id.innerText = currentLang[6][0] + ': ' + currentTimeObj.humidity + '% ' + 
-        //currentLang[6][2] + ': ' + (currentTimeObj.feels_like + 49).toFixed(0) + '° F ' + 
-        //currentLang[6][3] + ': ' + currentTimeObj.description + ' ' + currentLang[6][1] + ': ' + currentTimeObj.wind;
     }
     else {
         todayDataPanel.innerText = String(currentTimeObj.temp).padStart(4, '0') + ' C';
@@ -191,10 +163,8 @@ function exctractWeatherData(o) {
         discrPanel2.classList.add('grad');
         discrPanel2.innerText = currentLang[6][2] + ': ' + currentTimeObj.feels_like + 'C';
         discrPanel3.innerText = currentLang[6][3] + ': ' + currentTimeObj.description + ' ' + currentLang[6][1] + ': ' + currentTimeObj.wind;
-
-        //todayDatah2Id.innerText = currentLang[6][0] + ': ' + currentTimeObj.humidity + '% ' + currentLang[6][2] + ': ' +
-        //    currentTimeObj.feels_like + '° C ' + currentLang[6][3] + ': ' + currentTimeObj.description + ' ' + currentLang[6][1] + ': ' + currentTimeObj.wind;
     }
+
     discrPanel.appendChild(discrPanel1);
     discrPanel.appendChild(discrPanel2);
     discrPanel.appendChild(discrPanel3);
@@ -208,9 +178,7 @@ function exctractWeatherData(o) {
     data.forEach(function (item, i, arr) {
         let dayTag = document.querySelector('#DayPanelId' + ind);
         let dayImg = document.querySelector('#DayPanelimgsId' + ind);
-
-
-
+                  
         if (indexDay !== item.dt) {
             if (indexD < item.time.valueOf()) {
 
@@ -249,26 +217,20 @@ function exctractWeatherData(o) {
                     partOfDay.innerText = currentLang[9][1];
                     addDescr = 'additional-description-n';
                 }
-                //if (item.time.getHours() <== hours[])
+             
                 subLocalRecordDay.className = 'grad';
 
                 if (termoFarengeit) {
                     subLocalRecordDay.innerHTML =
-                        //String(item.time.getHours()).padStart(2, '0') + ':' + String(item.time.getMinutes()).padStart(2, '0') +
-                        //partOfDay + ' ' +
-                        (item.temp + 49).toFixed(0) + ' F'; //+ currentLang[6][0] + ': ' + item.humidity + '%, '; //+
-                    //currentLang[6][3] + ': ' + item.description + ', ' + currentLang[6][1] + ': ' + item.wind;
+                        (item.temp + 49).toFixed(0) + ' F'; 
                 } else {
-                    subLocalRecordDay.innerHTML =
-                        //String(item.time.getHours()).padStart(2, '0') + ':' + String(item.time.getMinutes()).padStart(2, '0') +
-                        //partOfDay + ' ' +
-                        item.temp.toFixed(0) + ' C';
+                    subLocalRecordDay.innerHTML = item.temp.toFixed(0) + ' C';
                 }
 
                 let subLocalRecordDayDetails = document.createElement('span');
                 subLocalRecordDayDetails.className = addDescr;
                 subLocalRecordDayDetails.innerText = currentLang[6][0] + ': ' + item.humidity + '%, ' +
-                   /* currentLang[6][3] + ': ' + */ item.description + ', ' + currentLang[6][1] + ': ' + item.wind;
+                   item.description + ', ' + currentLang[6][1] + ': ' + item.wind;
 
                 subLocalRecordDayImg.src = item.icon;
 
@@ -278,10 +240,7 @@ function exctractWeatherData(o) {
 
 
                 localRecordDay.appendChild(partOfDay);
-                //localRecordDay.appendChild(subLocalRecordDayImg);
-                //localRecordDay.appendChild(subLocalRecordDay);
                 localRecordDay.appendChild(subLocalRecordDayDetails);
-                //dayTag.appendChild(localRecordDay);
                 if (targetControll) {
                     targetControll.appendChild(localRecordDay);
                 }
@@ -349,9 +308,7 @@ function getMap(lat, lon) {
 
 
 function getGeoDataSearch() {
-    //popState();
-
-    let endpoint = 'http://ip-api.com/json/?fields=country,countryCode,city,lat,lon&lang=' + currentLang[0]; //+ '&callback=exctractGeoData';
+    let endpoint = 'http://ip-api.com/json/?fields=country,countryCode,city,lat,lon&lang=' + currentLang[0]; 
 
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function (data) {
@@ -365,9 +322,7 @@ function getGeoDataSearch() {
 }
 
 function getGeoData() {
-    //popState();
-
-    let endpoint = 'http://ip-api.com/json/?fields=country,countryCode,city,lat,lon&lang=' + currentLang[0]; //+ '&callback=exctractGeoData';
+    let endpoint = 'http://ip-api.com/json/?fields=country,countryCode,city,lat,lon&lang=' + currentLang[0]; 
 
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function (data) {
@@ -386,10 +341,7 @@ function popState() {
 
     if (currentLangFromStorage) {
         currentLang = JSON.parse(currentLangFromStorage);
-        //
         let selectLang = document.querySelector('#languageSelId');
-        //selectLang.value = currentLang[0];
-
     }
 
     if (termoFarengeitStorage) {
