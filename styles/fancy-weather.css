@@ -3,37 +3,24 @@
     background-repeat: no-repeat;
 }
 
-h2 {
-    border-style: solid;
-    border-color: fuchsia;
-    border-width: 2px;
-    /*display: none;*/
-}
-
 h3 {
     text-align: justify;
     flex-direction: column;
 }
 
 .ph3 {
-    /*display: flex;
-    justify-content: space-around;*/
     display: flex;
-    /*flex-direction: column;*/
     justify-content: space-around;
     min-width: 700px;
 }
 
 .localRecorDay {
-    /*flex-direction: row-reverse;*/
     display: flex;
     flex-direction: column;
-    /*border: 2px solid rgba(255,255,255,.5);*/
     border-radius: 8px;
     margin: 2px 2px;
     min-width: 100px;
     max-width: 170px;
-    /*font-size: 140%;*/
 }
 
 .language {
@@ -53,8 +40,6 @@ h3 {
 
 .widget {
     display: flex;
-    /*justify-content: space-between;*/
-    /*justify-content: flex-start;*/
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 5px;
@@ -84,7 +69,6 @@ h3 {
 
 .widget-part-group {
     display: flex;
-    /*justify-content: space-between;*/
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
@@ -92,7 +76,6 @@ h3 {
     color: #ffffff;
     min-height: 70px;
     min-width: 700px;
-    /*max-width: 700px;*/
 }
 
 .grRoup {
@@ -112,28 +95,20 @@ h3 {
     min-height: 70px;
     min-width: 700px;
     max-width: 700px;
-    /*flex: 1 1;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0%;*/
 }
 
 .widget-part-dt {
-    /*display: flex;
-    justify-content: flex-start;*/
     margin: 5px;
     padding: 20px;
     border-radius: 5px;
     background-color: rgba(0,0,0,.3);
     color: #ffffff;
     min-height: 70px;
-    /*vertical-align:central;*/
 }
 
 
 .widget-part-cord {
     display: flex;
-    /*justify-content: space-between;*/
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 5px;
@@ -183,7 +158,6 @@ h3 {
     justify-content: space-between;
     flex-direction: column;
     margin: 5px;
-    /*padding: 20px, 20px, 20px, 20px;*/
     border-radius: 5px;
     background-color: rgba(0,0,0,.3);
     color: #ffffff;
@@ -195,7 +169,6 @@ h3 {
     display: flex;
     flex-direction: column;
     margin: 5px;
-    /*padding: 20px, 20px, 20px, 20px ;*/
     justify-content: center;
     border-radius: 10px;
     padding: 3px;
@@ -203,7 +176,6 @@ h3 {
     color: #00ffff;
     min-height: 12px;
     border: 2px solid rgba(0,0,0,.5);
-    /*font-size: 180%;*/
     font-size: 32px;
     align-items: center;
     text-align: center;
@@ -318,16 +290,13 @@ option {
             left: 150px;
             transition: 1.5s ease-in-out;
         }
-
-
+        
 .imgsToday {
     height: 100px;
     width: 100px;
 }
 
 .imgs3Day {
-    /*display: flex;
-    align-items: center;*/
     height: 35px;
     width: 35px;
 }
@@ -340,8 +309,6 @@ option {
 .refresh {
     width: 40px;
     height: 35px;
-    /*background-image: url('./pictures/refresh_icon.svg'); image-url('../pictures/refresh_icon.svg');*/
-    /*content: 'Refresh';*/
 }
 
 
@@ -353,11 +320,9 @@ option {
     background-color: rgba(0,0,0,.4);
     border-radius: 5px;
     align-items: stretch;
-    /*width:198%;*/
     min-width: 98%;
     padding: 5px;
     font-size: 60%;
-    /*min-width: 150px;*/
 }
 
 
@@ -372,11 +337,9 @@ option {
 
 .tooltip {
     position: relative;
-    /*background: #ff3466;*/
     padding: 5px 12px;
     margin: 5px;
     font-size: 15px;
-    /*border-radius: 100%;*/
     color: #FFF;
 }
 
@@ -415,7 +378,6 @@ option {
     .tooltip:hover::after {
         opacity: 1;
         transform: translateY(-2px);
-        /*border-color: #ff0000;*/
     }
 
 @keyframes shake {
@@ -439,9 +401,6 @@ option {
 #anim:hover {
     animation: shake 500ms ease-in-out forwards;
 }
-
-
-
 
 .additional-description-m {
     display: none;

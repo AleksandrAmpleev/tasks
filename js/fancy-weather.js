@@ -2,9 +2,6 @@
 const weather = document.querySelector('#fancyWeatherId');
 const weatherBody = document.querySelector('#weatherBodyId');
 
-let curentPictureIndex = -1;
-
-
 function GetCurrentDateTime() {
     let now = new Date();
     let mnth = now.getMonth();

@@ -54,9 +54,6 @@ function keyDownSearhInput(e) {
     }
 }
 
-function weHaveError(e) {
-}
-
 function searchClick(e) {
     let findControll = document.querySelector('#searchId');
     let findString = findControll.value;
@@ -83,7 +80,6 @@ function searchClick(e) {
     };
     xhrWeathr.open('GET', weathrEndpoint, true);
     xhrWeathr.onerror = function(e) {
-        alert("Error fetching ");
     };
     
     xhrWeathr.send();

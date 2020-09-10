@@ -64,8 +64,6 @@ function toDegreesMinutesAndSeconds(coordinate) {
     let mint = document.createElement('span');
     let scd = document.createElement('span');
 
-
-
     let absolute = Math.abs(coordinate);
     let degrees = Math.floor(absolute);
     let minutesNotTruncated = (absolute - degrees) * 60;
@@ -151,17 +149,17 @@ function exctractWeatherData(o) {
     let discrPanel3 = document.createElement('span');
     
     if (termoFarengeit) {
-        todayDataPanel.innerText = String((currentTimeObj.temp + 49)).padStart(4, '0') + ' F';
+        todayDataPanel.innerText = /*String(*/(currentTimeObj.temp + 49).toFixed(0)/*).padStart(4, '0')*/ + ' F';
         discrPanel1.innerText = currentLang[6][0] + ': ' + currentTimeObj.humidity + '% ';
         discrPanel2.classList.add('grad');
         discrPanel2.innerText = currentLang[6][2] + ': ' + (currentTimeObj.feels_like + 49).toFixed(0) + 'F';
         discrPanel3.innerText = currentLang[6][3] + ': ' + currentTimeObj.description + ' ' + currentLang[6][1] + ': ' + currentTimeObj.wind;
     }
     else {
-        todayDataPanel.innerText = String(currentTimeObj.temp).padStart(4, '0') + ' C';
+        todayDataPanel.innerText = /*String(*/currentTimeObj.temp.toFixed(0)/*).padStart(4, '0')*/ + ' C';
         discrPanel1.innerText = currentLang[6][0] + ': ' + currentTimeObj.humidity + '% ';
         discrPanel2.classList.add('grad');
-        discrPanel2.innerText = currentLang[6][2] + ': ' + currentTimeObj.feels_like + 'C';
+        discrPanel2.innerText = currentLang[6][2] + ': ' + currentTimeObj.feels_like.toFixed(0) + 'C';
         discrPanel3.innerText = currentLang[6][3] + ': ' + currentTimeObj.description + ' ' + currentLang[6][1] + ': ' + currentTimeObj.wind;
     }
 
@@ -236,8 +234,6 @@ function exctractWeatherData(o) {
 
                 partOfDay.appendChild(subLocalRecordDayImg);
                 partOfDay.appendChild(subLocalRecordDay);
-
-
 
                 localRecordDay.appendChild(partOfDay);
                 localRecordDay.appendChild(subLocalRecordDayDetails);
