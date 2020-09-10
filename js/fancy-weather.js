@@ -26,8 +26,16 @@ function controlWeatherTodayLoad() {
     weatherToday.id = 'weatherTodayId';
     return weatherToday;
 }
+function setSettings() {
+    let languageSel = document.querySelector('#languageSelId');
+    languageSel.selectedIndex = currentLangSi;
+
+    let slideThree = document.querySelector('#slideThree');
+    slideThree.checked = !termoFarengeit;
+}
 
 function pageLoad() {
+    popState();
     getFoto(weatherBody.background);
     let weatherMain = document.createElement('div');
     weatherMain.className = 'widget';
@@ -43,7 +51,9 @@ function pageLoad() {
     weatherMain.appendChild(controlWeather3DaysLoad());
     weatherMain.appendChild(controlGeoLoad());
     weather.appendChild(weatherMain);   
-        
+
+
+    setSettings();
     setInterval(GetCurrentDateTime, 1000);
 }
 

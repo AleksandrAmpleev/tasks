@@ -330,12 +330,13 @@ function getGeoData() {
 }
 
 function popState() {
+    let currentLangFromStorageSi = localStorage.getItem("currentLangSi");
     let currentLangFromStorage = localStorage.getItem("currentLang");
     let termoFarengeitStorage = localStorage.getItem("termoFarengeit");
 
-    if (currentLangFromStorage) {
+    if (currentLangFromStorage && currentLangFromStorageSi) {
         currentLang = JSON.parse(currentLangFromStorage);
-        let selectLang = document.querySelector('#languageSelId');
+        currentLangSi = parseInt(currentLangFromStorageSi);
     }
 
     if (termoFarengeitStorage) {
@@ -346,6 +347,7 @@ function popState() {
 function pushState() {
     localStorage.setItem("currentLang", JSON.stringify(currentLang));
     localStorage.setItem("termoFarengeit", JSON.stringify(termoFarengeit));
+    localStorage.setItem("currentLangSi", JSON.stringify(currentLangSi));
 }
 
 function pageLoad() {

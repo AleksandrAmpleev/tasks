@@ -42,6 +42,7 @@
 
 let termoFarengeit = false;
 let currentLang = languages[0];
+let currentLangSi = 0;
 
 function refreshClick(e) {
     getFoto();
@@ -93,6 +94,7 @@ function termoClick(e) {
 function changeLanguageClick(e) {
     if (currentLang[0] !== languages[e.target.selectedIndex][0]) {
         currentLang = languages[e.target.selectedIndex];
+        currentLangSi = e.target.selectedIndex;
         pushState();
         getGeoData();
     }
@@ -118,6 +120,7 @@ function controlBlockLoad() {
     let languageSel = document.createElement('select');
     languageSel.className = 'select-weather';
     languageSel.id = 'languageSelId';
+    
     languageSel.addEventListener('click', changeLanguageClick);
 
     for (let i = 0; i < languages.length; i++) {
@@ -198,6 +201,9 @@ function controlBlockLoad() {
 
     block.appendChild(locationPanel);
     block.appendChild(container);
+
+
+   // popState();
 
     return block;
 }
