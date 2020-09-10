@@ -57,9 +57,8 @@ function keyDownSearhInput(e) {
 function searchClick(e) {
     let findControll = document.querySelector('#searchId');
     let findString = findControll.value;
-    //https://api.openweathermap.org/data/2.5/weather?q=Samara&APPID=247d704aaa926248583db53c5abfad51
-
-    let weathrEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?q=' + findString + '&lang=' + currentLang[0] + '&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ua&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ru&units=metric&APPID=a9a3a62789de80865407c0452e9d1c27';
+  
+    let weathrEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?q=' + findString + '&lang=' + currentLang[0] + '&units=metric&APPID=247d704aaa926248583db53c5abfad51'; 
     let xhrWeathr = new XMLHttpRequest();
 
     xhrWeathr.onreadystatechange = function (data) {

@@ -259,7 +259,7 @@ function exctractWeatherData(o) {
 }
 
 function getFoto() {
-    let fotoEndpoint = 'https://api.unsplash.com/photos/random?orientation=landscape&per_page=1&query=nature&client_id=e2077ad31a806c894c460aec8f81bc2af4d09c4f8104ae3177bb809faf0eac17';
+    let fotoEndpoint = 'https://api.unsplash.com/photos/random?orientation=landscape&per_page=1&query=nature&client_id=8LlqHU-Qjql04HjpkMQtnr2JazbkwvUB2t83kIeMow0';
     let xhrFoto = new XMLHttpRequest();
 
     xhrFoto.onreadystatechange = function (data) {
@@ -275,9 +275,7 @@ function getFoto() {
 }
 
 function getWeather() {
-    let weathrEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=' + currentLang[0] + '&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ua&units=metric&APPID=247d704aaa926248583db53c5abfad51'; //'https://api.openweathermap.org/data/2.5/forecast?q=Kiev&lang=ru&units=metric&APPID=a9a3a62789de80865407c0452e9d1c27';
-    //let weathrEndpoint = "https://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=7&applid=247d704aaa926248583db53c5abfad51";
-    // let weathrEndpoint ='https://api.openweathermap.org/data/2.5/forecast/daily?q=' + 'Saratov' + /*'&lang=' + currentLang[0] + */'&cnt=3&appid=247d704aaa926248583db53c5abfad51';//'https://samples.openweathermap.org/data/2.5/forecast/daily?id=524901&appid=b1b15e88fa797225412429c1c50c122a1';// 'https://samples.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&appid=b1b15e88fa797225412429c1c50c122a1';
+    let weathrEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&lang=' + currentLang[0] + '&units=metric&APPID=247d704aaa926248583db53c5abfad51';
     let xhrWeathr = new XMLHttpRequest();
 
     xhrWeathr.onreadystatechange = function (data) {

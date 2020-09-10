@@ -27,8 +27,6 @@ function controlWeatherTodayLoad() {
     return weatherToday;
 }
 
-
-
 function pageLoad() {
     getFoto(weatherBody.background);
     let weatherMain = document.createElement('div');
